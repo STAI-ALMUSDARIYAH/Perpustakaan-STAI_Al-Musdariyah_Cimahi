@@ -1298,6 +1298,24 @@ function setupSidebar() {
         menuHTML += `<button class="menu-item" onclick="loadBooksPage()" data-page="books"><i class="fas fa-book"></i> Data Buku</button>`;
         menuHTML += `<button class="menu-item" onclick="loadMembersPage()" data-page="members"><i class="fas fa-users"></i> Data Anggota</button>`;
         menuHTML += `<button class="menu-item" onclick="loadBorrowingsPage()" data-page="borrowings"><i class="fas fa-exchange-alt"></i> Peminjaman</button>`;
+        if (isAdmin) {
+    menuHTML += `<button class="menu-item" onclick="loadBooksPage()" 
+        data-page="books"><i class="fas fa-book"></i> Data Buku</button>`;
+    menuHTML += `<button class="menu-item" onclick="loadMembersPage()" 
+        data-page="members"><i class="fas fa-users"></i> Data Anggota</button>`;
+    menuHTML += `<button class="menu-item" onclick="loadBorrowingsPage()" 
+        data-page="borrowings"><i class="fas fa-exchange-alt"></i> Peminjaman</button>`;
+    
+    // ✅ TAMBAHKAN INI
+    menuHTML += `<button class="menu-item" onclick="loadCategoriesPage()" 
+        data-page="categories"><i class="fas fa-tags"></i> Kategori Buku</button>`;
+    
+    menuHTML += '<div class="menu-label">Transaksi</div>';
+    menuHTML += `<button class="menu-item" onclick="showBorrowForm()" 
+        data-page="borrow"><i class="fas fa-hand-holding"></i> Pinjam Buku</button>`;
+    menuHTML += `<button class="menu-item" onclick="showReturnForm()" 
+        data-page="return"><i class="fas fa-undo"></i> Pengembalian</button>`;
+}
         menuHTML += '<div class="menu-label">Transaksi</div>';
         menuHTML += `<button class="menu-item" onclick="showBorrowForm()" data-page="borrow"><i class="fas fa-hand-holding"></i> Pinjam Buku</button>`;
         menuHTML += `<button class="menu-item" onclick="showReturnForm()" data-page="return"><i class="fas fa-undo"></i> Pengembalian</button>`;
@@ -1309,6 +1327,7 @@ function setupSidebar() {
 
     menu.innerHTML = menuHTML;
 }
+    
 
 function setActiveMenu(page) {
     document.querySelectorAll('.menu-item').forEach(item => {
@@ -2134,6 +2153,659 @@ function showAbout() {
             </div>
         </div>
     `, 'modal-lg');
+}
+    // ==================== CATEGORIES ====================
+let allCategories = [];
+
+const CATEGORY_COLORS = [
+    '#0ea5e9','#8b5cf6','#10b981','#f59e0b','#ef4444',
+    '#06b6d4','#ec4899','#6366f1','#84cc16','#64748b',
+    '#f97316','#14b8a6','#a855f7','#0284c7','#059669'
+];
+
+const CATEGORY_ICONS = [
+    'fa-book','fa-book-open','fa-bookmark','fa-graduation-cap',
+    'fa-mosque','fa-moon','fa-star','fa-heart','fa-scale-balanced',
+    'fa-quran','fa-language','fa-landmark','fa-pen-nib',
+    'fa-scroll','fa-globe','fa-users','fa-lightbulb',
+    'fa-magnifying-glass','fa-atom','fa-leaf'
+];
+
+async function loadCategoriesPage() {
+    setActiveMenu('categories');
+    document.getElementById('pageTitle').textContent = 'Manajemen Kategori';
+    const content = document.getElementById('contentArea');
+
+    content.innerHTML = `
+        <div class="data-card" style="margin-bottom:24px;">
+            <div class="data-card-header">
+                <h3><i class="fas fa-tags"></i> Kelola Kategori Buku</h3>
+                <div class="filter-bar">
+                    <input type="text" id="catSearchInput" 
+                        placeholder="Cari kategori..." 
+                        onkeyup="filterCategories()">
+                    <button class="btn btn-primary btn-sm" 
+                        onclick="showAddCategoryModal()">
+                        <i class="fas fa-plus"></i> Tambah Kategori
+                    </button>
+                </div>
+            </div>
+            <div style="padding:20px 24px;">
+                <div id="catStatBar" class="cat-stat-bar">
+                    <i class="fas fa-spinner fa-spin" 
+                        style="color:var(--primary)"></i> 
+                    Memuat statistik...
+                </div>
+                <div class="category-grid" id="categoryGrid">
+                    ${[1,2,3,4].map(() => `
+                        <div class="category-card" 
+                            style="opacity:0.4;pointer-events:none;">
+                            <div class="category-icon" 
+                                style="background:#e2e8f0;"></div>
+                            <div class="category-info">
+                                <div style="height:16px;background:#e2e8f0;
+                                    border-radius:4px;margin-bottom:8px;
+                                    width:60%;"></div>
+                                <div style="height:12px;background:#f1f5f9;
+                                    border-radius:4px;width:90%;"></div>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        </div>
+
+        <div class="data-card">
+            <div class="data-card-header">
+                <h3><i class="fas fa-table"></i> Tabel Kategori</h3>
+            </div>
+            <div class="data-card-body">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Kategori</th>
+                            <th>Deskripsi</th>
+                            <th>Jumlah Buku</th>
+                            <th>Tanggal Input</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="categoriesTableBody">
+                        <tr><td colspan="6" style="text-align:center;
+                            padding:40px;">Memuat data...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    `;
+
+    await fetchAndRenderCategories();
+}
+
+async function fetchAndRenderCategories() {
+    const result = await apiCall({ action: 'getCategories' });
+    if (result.status === 'success') {
+        allCategories = result.data;
+        renderCategoryGrid(allCategories);
+        renderCategoriesTable(allCategories);
+        renderCatStatBar(allCategories);
+    } else {
+        showNotification(result.message, 'error');
+    }
+}
+
+function renderCatStatBar(categories) {
+    const bar = document.getElementById('catStatBar');
+    if (!bar) return;
+
+    const total = categories.length;
+    const totalBuku = categories.reduce((s, c) => s + (c.jumlah_buku || 0), 0);
+    const withBooks = categories.filter(c => c.jumlah_buku > 0).length;
+    const empty = total - withBooks;
+
+    bar.innerHTML = `
+        <div class="cat-stat-item">
+            <i class="fas fa-tags" style="color:var(--primary)"></i>
+            <strong>${total}</strong> Total Kategori
+        </div>
+        <div class="cat-stat-item">
+            <i class="fas fa-book" style="color:var(--accent2)"></i>
+            <strong>${totalBuku}</strong> Total Buku Terkategori
+        </div>
+        <div class="cat-stat-item">
+            <i class="fas fa-check-circle" style="color:var(--success)"></i>
+            <strong>${withBooks}</strong> Kategori Terisi
+        </div>
+        <div class="cat-stat-item">
+            <i class="fas fa-circle-minus" style="color:var(--text-muted)"></i>
+            <strong>${empty}</strong> Kategori Kosong
+        </div>
+    `;
+}
+
+function renderCategoryGrid(categories) {
+    const grid = document.getElementById('categoryGrid');
+    if (!grid) return;
+
+    if (!categories.length) {
+        grid.innerHTML = `
+            <div class="empty-state" style="grid-column:1/-1;">
+                <i class="fas fa-tags"></i>
+                <h3>Belum ada kategori</h3>
+                <p>Tambahkan kategori pertama Anda</p>
+            </div>`;
+        return;
+    }
+
+    grid.innerHTML = categories.map(cat => `
+        <div class="category-card" 
+            style="--cat-color:${cat.warna}">
+            <div class="category-icon" 
+                style="background:${cat.warna}">
+                <i class="fas ${cat.icon || 'fa-book'}"></i>
+            </div>
+            <div class="category-info">
+                <h4>${cat.nama}</h4>
+                <p>${cat.deskripsi || 
+                    '<em style="color:var(--text-muted)">Tidak ada deskripsi</em>'}</p>
+                <div class="category-meta">
+                    <span class="category-book-count">
+                        <i class="fas fa-book"></i> 
+                        ${cat.jumlah_buku} buku
+                    </span>
+                </div>
+            </div>
+            <div class="category-actions">
+                <button class="action-btn" 
+                    title="Edit Kategori"
+                    onclick="showEditCategoryModal('${cat.id}')">
+                    <i class="fas fa-pen"></i>
+                </button>
+                <button class="action-btn delete" 
+                    title="Hapus Kategori"
+                    onclick="deleteCategory('${cat.id}',
+                        '${cat.nama.replace(/'/g,"\\'")}',
+                        ${cat.jumlah_buku})">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </div>
+        </div>
+    `).join('');
+}
+
+function renderCategoriesTable(categories) {
+    const tbody = document.getElementById('categoriesTableBody');
+    if (!tbody) return;
+
+    if (!categories.length) {
+        tbody.innerHTML = `
+            <tr><td colspan="6">
+                <div class="empty-state">
+                    <i class="fas fa-tags"></i>
+                    <h3>Belum ada kategori</h3>
+                </div>
+            </td></tr>`;
+        return;
+    }
+
+    tbody.innerHTML = categories.map(cat => `
+        <tr>
+            <td><strong>${cat.id}</strong></td>
+            <td>
+                <div style="display:flex;align-items:center;gap:10px;">
+                    <div style="width:32px;height:32px;border-radius:8px;
+                        background:${cat.warna};display:flex;
+                        align-items:center;justify-content:center;
+                        color:white;font-size:0.85rem;flex-shrink:0;">
+                        <i class="fas ${cat.icon || 'fa-book'}"></i>
+                    </div>
+                    <strong>${cat.nama}</strong>
+                </div>
+            </td>
+            <td style="max-width:250px;color:var(--text-light);">
+                ${cat.deskripsi || '-'}
+            </td>
+            <td>
+                <span class="status-badge 
+                    ${cat.jumlah_buku > 0 ? 
+                        'status-active' : 'status-inactive'}">
+                    ${cat.jumlah_buku} buku
+                </span>
+            </td>
+            <td>${formatDate(cat.tanggal_input)}</td>
+            <td>
+                <div class="action-btns">
+                    <button class="action-btn" 
+                        title="Edit"
+                        onclick="showEditCategoryModal('${cat.id}')">
+                        <i class="fas fa-pen"></i>
+                    </button>
+                    <button class="action-btn" 
+                        title="Lihat Buku"
+                        onclick="viewCategoryBooks('${cat.nama}')">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                    <button class="action-btn delete" 
+                        title="Hapus"
+                        onclick="deleteCategory('${cat.id}',
+                            '${cat.nama.replace(/'/g,"\\'")}',
+                            ${cat.jumlah_buku})">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+    `).join('');
+}
+
+function filterCategories() {
+    const q = document.getElementById('catSearchInput')
+        .value.toLowerCase();
+    const filtered = !q ? allCategories : 
+        allCategories.filter(c =>
+            c.nama.toLowerCase().includes(q) ||
+            (c.deskripsi && c.deskripsi.toLowerCase().includes(q))
+        );
+    renderCategoryGrid(filtered);
+    renderCategoriesTable(filtered);
+    renderCatStatBar(filtered);
+}
+
+// -------- ADD CATEGORY MODAL --------
+function showAddCategoryModal() {
+    showDynamicModal('addCatModal', `
+        <h2>
+            <i class="fas fa-plus-circle" 
+                style="color:var(--primary)"></i> 
+            Tambah Kategori
+        </h2>
+        <p class="subtitle">Buat kategori baru untuk koleksi buku</p>
+
+        <div class="form-group">
+            <label>Nama Kategori *</label>
+            <input type="text" id="acNama" 
+                placeholder="Contoh: Tafsir Al-Quran"
+                oninput="updateCatPreview()">
+        </div>
+
+        <div class="form-group">
+            <label>Deskripsi</label>
+            <textarea id="acDesc" rows="2"
+                placeholder="Deskripsi singkat kategori ini..."
+                oninput="updateCatPreview()"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Pilih Warna</label>
+            <div class="color-grid" id="acColorGrid">
+                ${CATEGORY_COLORS.map(c => `
+                    <div class="color-swatch ${c === '#0ea5e9' ? 'selected' : ''}"
+                        style="background:${c}"
+                        data-color="${c}"
+                        onclick="selectColor('${c}','ac')"
+                        title="${c}"></div>
+                `).join('')}
+            </div>
+            <input type="color" id="acColorCustom" 
+                value="#0ea5e9" 
+                onchange="selectCustomColor(this.value,'ac')"
+                style="margin-top:8px;width:100%;
+                    height:36px;border-radius:8px;
+                    border:1px solid var(--border);
+                    padding:2px;cursor:pointer;">
+        </div>
+
+        <div class="form-group">
+            <label>Pilih Icon</label>
+            <div class="icon-grid" id="acIconGrid">
+                ${CATEGORY_ICONS.map((ico, idx) => `
+                    <div class="icon-item 
+                        ${idx === 0 ? 'selected' : ''}"
+                        data-icon="${ico}"
+                        onclick="selectIcon('${ico}','ac')"
+                        title="${ico}">
+                        <i class="fas ${ico}"></i>
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Preview</label>
+            <div id="acPreview" style="display:flex;
+                align-items:center;gap:12px;padding:16px;
+                background:var(--bg);border-radius:var(--radius);
+                border:1px solid var(--border);">
+                <div id="acPreviewIcon" 
+                    style="width:48px;height:48px;
+                        border-radius:12px;background:#0ea5e9;
+                        display:flex;align-items:center;
+                        justify-content:center;
+                        color:white;font-size:1.2rem;">
+                    <i class="fas fa-book"></i>
+                </div>
+                <div>
+                    <div id="acPreviewName" 
+                        style="font-weight:700;
+                            color:var(--secondary);">
+                        Nama Kategori
+                    </div>
+                    <div id="acPreviewDesc" 
+                        style="font-size:0.78rem;
+                            color:var(--text-light);">
+                        Deskripsi kategori
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <input type="hidden" id="acColor" value="#0ea5e9">
+        <input type="hidden" id="acIcon" value="fa-book">
+
+        <button class="btn btn-primary btn-full" 
+            onclick="doAddCategory()">
+            <i class="fas fa-save"></i> Simpan Kategori
+        </button>
+    `, 'modal-lg');
+}
+
+function selectColor(color, prefix) {
+    document.getElementById(prefix + 'Color').value = color;
+    document.querySelectorAll(`#${prefix}ColorGrid .color-swatch`)
+        .forEach(el => {
+            el.classList.toggle('selected', 
+                el.dataset.color === color);
+        });
+    updateCatPreview(prefix);
+}
+
+function selectCustomColor(color, prefix) {
+    document.getElementById(prefix + 'Color').value = color;
+    document.querySelectorAll(`#${prefix}ColorGrid .color-swatch`)
+        .forEach(el => el.classList.remove('selected'));
+    updateCatPreview(prefix);
+}
+
+function selectIcon(icon, prefix) {
+    document.getElementById(prefix + 'Icon').value = icon;
+    document.querySelectorAll(`#${prefix}IconGrid .icon-item`)
+        .forEach(el => {
+            el.classList.toggle('selected', 
+                el.dataset.icon === icon);
+        });
+    updateCatPreview(prefix);
+}
+
+function updateCatPreview(prefix = 'ac') {
+    const nama = document.getElementById(prefix + 'Nama')?.value 
+        || document.getElementById(prefix === 'ac' ? 'acNama' : 'ecNama')?.value 
+        || 'Nama Kategori';
+    const desc = document.getElementById(prefix + 'Desc')?.value 
+        || document.getElementById(prefix === 'ac' ? 'acDesc' : 'ecDesc')?.value 
+        || 'Deskripsi kategori';
+    const color = document.getElementById(prefix + 'Color')?.value || '#0ea5e9';
+    const icon = document.getElementById(prefix + 'Icon')?.value || 'fa-book';
+
+    const previewIcon = document.getElementById(prefix + 'PreviewIcon');
+    const previewName = document.getElementById(prefix + 'PreviewName');
+    const previewDesc = document.getElementById(prefix + 'PreviewDesc');
+
+    if (previewIcon) {
+        previewIcon.style.background = color;
+        previewIcon.innerHTML = `<i class="fas ${icon}"></i>`;
+    }
+    if (previewName) previewName.textContent = nama || 'Nama Kategori';
+    if (previewDesc) previewDesc.textContent = desc || 'Deskripsi kategori';
+}
+
+async function doAddCategory() {
+    const nama = document.getElementById('acNama').value.trim();
+    const deskripsi = document.getElementById('acDesc').value.trim();
+    const warna = document.getElementById('acColor').value;
+    const icon = document.getElementById('acIcon').value;
+
+    if (!nama) { 
+        showNotification('Nama kategori wajib diisi', 'warning'); 
+        return; 
+    }
+
+    const result = await apiCall({ 
+        action: 'addCategory', 
+        nama, deskripsi, warna, icon 
+    });
+    
+    if (result.status === 'success') {
+        showNotification('Kategori berhasil ditambahkan!', 'success');
+        closeDynamicModal('addCatModal');
+        await fetchAndRenderCategories();
+    } else {
+        showNotification(result.message, 'error');
+    }
+}
+
+// -------- EDIT CATEGORY MODAL --------
+function showEditCategoryModal(catId) {
+    const cat = allCategories.find(c => c.id === catId);
+    if (!cat) return;
+
+    showDynamicModal('editCatModal', `
+        <h2>
+            <i class="fas fa-pen" 
+                style="color:var(--primary)"></i> 
+            Edit Kategori
+        </h2>
+        <p class="subtitle">Perbarui informasi kategori</p>
+
+        <div class="form-group">
+            <label>Nama Kategori *</label>
+            <input type="text" id="ecNama" 
+                value="${cat.nama}"
+                oninput="updateCatPreview('ec')">
+        </div>
+
+        <div class="form-group">
+            <label>Deskripsi</label>
+            <textarea id="ecDesc" rows="2"
+                oninput="updateCatPreview('ec')"
+                >${cat.deskripsi || ''}</textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Pilih Warna</label>
+            <div class="color-grid" id="ecColorGrid">
+                ${CATEGORY_COLORS.map(c => `
+                    <div class="color-swatch 
+                        ${c === cat.warna ? 'selected' : ''}"
+                        style="background:${c}"
+                        data-color="${c}"
+                        onclick="selectColor('${c}','ec')"
+                        title="${c}"></div>
+                `).join('')}
+            </div>
+            <input type="color" id="ecColorCustom"
+                value="${cat.warna}"
+                onchange="selectCustomColor(this.value,'ec')"
+                style="margin-top:8px;width:100%;
+                    height:36px;border-radius:8px;
+                    border:1px solid var(--border);
+                    padding:2px;cursor:pointer;">
+        </div>
+
+        <div class="form-group">
+            <label>Pilih Icon</label>
+            <div class="icon-grid" id="ecIconGrid">
+                ${CATEGORY_ICONS.map(ico => `
+                    <div class="icon-item 
+                        ${ico === cat.icon ? 'selected' : ''}"
+                        data-icon="${ico}"
+                        onclick="selectIcon('${ico}','ec')"
+                        title="${ico}">
+                        <i class="fas ${ico}"></i>
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Preview</label>
+            <div style="display:flex;align-items:center;gap:12px;
+                padding:16px;background:var(--bg);
+                border-radius:var(--radius);
+                border:1px solid var(--border);">
+                <div id="ecPreviewIcon" 
+                    style="width:48px;height:48px;
+                        border-radius:12px;
+                        background:${cat.warna};
+                        display:flex;align-items:center;
+                        justify-content:center;
+                        color:white;font-size:1.2rem;">
+                    <i class="fas ${cat.icon || 'fa-book'}"></i>
+                </div>
+                <div>
+                    <div id="ecPreviewName" 
+                        style="font-weight:700;
+                            color:var(--secondary);">
+                        ${cat.nama}
+                    </div>
+                    <div id="ecPreviewDesc" 
+                        style="font-size:0.78rem;
+                            color:var(--text-light);">
+                        ${cat.deskripsi || 'Deskripsi kategori'}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        ${cat.jumlah_buku > 0 ? `
+        <div style="background:rgba(245,158,11,0.08);
+            border:1px solid rgba(245,158,11,0.3);
+            border-radius:var(--radius);padding:12px 16px;
+            margin-bottom:16px;font-size:0.85rem;
+            color:var(--warning);display:flex;
+            align-items:center;gap:8px;">
+            <i class="fas fa-triangle-exclamation"></i>
+            <span>Kategori ini memiliki <strong>${cat.jumlah_buku} buku</strong>. 
+            Jika nama diubah, semua buku akan diperbarui otomatis.</span>
+        </div>` : ''}
+
+        <input type="hidden" id="ecColor" value="${cat.warna}">
+        <input type="hidden" id="ecIcon" value="${cat.icon || 'fa-book'}">
+
+        <button class="btn btn-primary btn-full" 
+            onclick="doUpdateCategory('${cat.id}')">
+            <i class="fas fa-save"></i> Update Kategori
+        </button>
+    `, 'modal-lg');
+}
+
+async function doUpdateCategory(id) {
+    const nama = document.getElementById('ecNama').value.trim();
+    const deskripsi = document.getElementById('ecDesc').value.trim();
+    const warna = document.getElementById('ecColor').value;
+    const icon = document.getElementById('ecIcon').value;
+
+    if (!nama) { 
+        showNotification('Nama kategori wajib diisi', 'warning'); 
+        return; 
+    }
+
+    const result = await apiCall({ 
+        action: 'updateCategory', 
+        id, nama, deskripsi, warna, icon 
+    });
+
+    if (result.status === 'success') {
+        showNotification('Kategori berhasil diupdate!', 'success');
+        closeDynamicModal('editCatModal');
+        await fetchAndRenderCategories();
+    } else {
+        showNotification(result.message, 'error');
+    }
+}
+
+// -------- DELETE & VIEW --------
+async function deleteCategory(id, nama, jumlahBuku) {
+    if (jumlahBuku > 0) {
+        showNotification(
+            `Kategori "${nama}" memiliki ${jumlahBuku} buku, 
+            tidak bisa dihapus!`, 
+            'warning'
+        );
+        return;
+    }
+
+    if (!confirm(`Hapus kategori "${nama}"?`)) return;
+
+    const result = await apiCall({ action: 'deleteCategory', id });
+    if (result.status === 'success') {
+        showNotification('Kategori berhasil dihapus', 'success');
+        await fetchAndRenderCategories();
+    } else {
+        showNotification(result.message, 'error');
+    }
+}
+
+async function viewCategoryBooks(kategoriNama) {
+    const result = await apiCall({ action: 'getBooks' });
+    if (result.status !== 'success') return;
+
+    const books = result.data.filter(b => b.kategori === kategoriNama);
+    const cat = allCategories.find(c => c.nama === kategoriNama);
+    const color = cat?.warna || '#0ea5e9';
+
+    showDynamicModal('catBooksModal', `
+        <div style="display:flex;align-items:center;gap:12px;
+            margin-bottom:20px;">
+            <div style="width:48px;height:48px;
+                border-radius:12px;background:${color};
+                display:flex;align-items:center;
+                justify-content:center;
+                color:white;font-size:1.2rem;">
+                <i class="fas ${cat?.icon || 'fa-book'}"></i>
+            </div>
+            <div>
+                <h2 style="margin:0;">${kategoriNama}</h2>
+                <p style="margin:0;color:var(--text-light);
+                    font-size:0.85rem;">
+                    ${books.length} buku dalam kategori ini
+                </p>
+            </div>
+        </div>
+        ${books.length ? `
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Judul</th>
+                    <th>Pengarang</th>
+                    <th>Tahun</th>
+                    <th>Tersedia</th>
+                </tr>
+            </thead>
+            <tbody>
+                ${books.map(b => `
+                    <tr>
+                        <td><strong>${b.judul}</strong></td>
+                        <td>${b.pengarang}</td>
+                        <td>${b.tahun}</td>
+                        <td>
+                            <span class="status-badge 
+                                ${b.tersedia > 0 ? 
+                                    'status-active' : 
+                                    'status-overdue'}">
+                                ${b.tersedia}/${b.jumlah}
+                            </span>
+                        </td>
+                    </tr>
+                `).join('')}
+            </tbody>
+        </table>` : `
+        <div class="empty-state">
+            <i class="fas fa-book-open"></i>
+            <h3>Belum ada buku</h3>
+            <p>Belum ada buku dalam kategori ini</p>
+        </div>`}
+    `, 'modal-xl');
 }
 </script>
 </body>
