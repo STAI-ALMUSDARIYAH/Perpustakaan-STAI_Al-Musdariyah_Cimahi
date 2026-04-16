@@ -7,7 +7,6 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* ==================== ROOT & RESET ==================== */
         :root {
             --primary: #0ea5e9;
             --primary-dark: #0284c7;
@@ -34,9 +33,7 @@
             --radius-xl: 24px;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         body {
             font-family: 'Poppins', sans-serif;
             background: var(--bg);
@@ -44,14 +41,11 @@
             overflow-x: hidden;
             min-height: 100vh;
         }
-
-        /* ==================== SCROLLBAR ==================== */
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: var(--primary-ultra-light); }
         ::-webkit-scrollbar-thumb { background: var(--primary-light); border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
 
-        /* ==================== LOADING SCREEN ==================== */
         .loading-screen {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 50%, #8b5cf6 100%);
@@ -59,9 +53,7 @@
             z-index: 99999; transition: opacity 0.5s, visibility 0.5s;
         }
         .loading-screen.hidden { opacity: 0; visibility: hidden; }
-        .loader {
-            text-align: center; color: white;
-        }
+        .loader { text-align: center; color: white; }
         .loader-icon {
             width: 80px; height: 80px; border: 4px solid rgba(255,255,255,0.3);
             border-top-color: white; border-radius: 50%;
@@ -69,10 +61,8 @@
         }
         .loader h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 5px; }
         .loader p { font-size: 0.9rem; opacity: 0.8; }
-
         @keyframes spin { to { transform: rotate(360deg); } }
 
-        /* ==================== NOTIFICATION ==================== */
         .notification {
             position: fixed; top: 20px; right: 20px; z-index: 99998;
             padding: 16px 24px; border-radius: var(--radius);
@@ -87,17 +77,11 @@
         .notification.info { background: linear-gradient(135deg, #0ea5e9, #0284c7); }
         .notification.warning { background: linear-gradient(135deg, #f59e0b, #d97706); }
 
-        /* ==================== PUBLIC PAGE ==================== */
-        .public-page {
-            min-height: 100vh;
-        }
-
-        /* NAVBAR */
+        .public-page { min-height: 100vh; }
         .navbar {
             background: rgba(255,255,255,0.95);
             backdrop-filter: blur(20px);
-            padding: 0 40px;
-            height: 70px;
+            padding: 0 40px; height: 70px;
             display: flex; align-items: center; justify-content: space-between;
             position: sticky; top: 0; z-index: 1000;
             box-shadow: 0 2px 20px rgba(14, 165, 233, 0.08);
@@ -131,7 +115,6 @@
         }
         .btn-login:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(14,165,233,0.4); }
 
-        /* HERO SECTION */
         .hero {
             min-height: calc(100vh - 70px);
             background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 30%, #ffffff 60%, #ede9fe 100%);
@@ -162,8 +145,7 @@
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
         .hero-text p {
-            font-size: 1.1rem; color: var(--text-light); line-height: 1.8;
-            margin-bottom: 32px;
+            font-size: 1.1rem; color: var(--text-light); line-height: 1.8; margin-bottom: 32px;
         }
         .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
         .btn {
@@ -186,28 +168,22 @@
         .btn-danger { background: linear-gradient(135deg, var(--danger), #dc2626); color: white; }
         .btn-sm { padding: 6px 14px; font-size: 0.8rem; border-radius: 8px; }
 
-        .hero-visual {
-            display: flex; justify-content: center; position: relative;
-        }
+        .hero-visual { display: flex; justify-content: center; position: relative; }
         .hero-card {
             background: white; border-radius: var(--radius-xl); padding: 40px;
             box-shadow: var(--shadow-xl); position: relative;
             border: 1px solid rgba(14,165,233,0.08);
         }
-        .hero-card .stats-grid {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
-        }
+        .hero-card .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         .stat-item {
             background: linear-gradient(135deg, var(--primary-ultra-light), white);
             border-radius: var(--radius); padding: 24px; text-align: center;
-            border: 1px solid rgba(14,165,233,0.1);
-            transition: var(--transition);
+            border: 1px solid rgba(14,165,233,0.1); transition: var(--transition);
         }
         .stat-item:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
         .stat-item .stat-icon {
             width: 48px; height: 48px; border-radius: 12px; margin: 0 auto 12px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.3rem;
+            display: flex; align-items: center; justify-content: center; font-size: 1.3rem;
         }
         .stat-item:nth-child(1) .stat-icon { background: linear-gradient(135deg, #0ea5e9, #06b6d4); color: white; }
         .stat-item:nth-child(2) .stat-icon { background: linear-gradient(135deg, #8b5cf6, #7c3aed); color: white; }
@@ -216,32 +192,20 @@
         .stat-number { font-size: 1.8rem; font-weight: 800; color: var(--secondary); }
         .stat-label { font-size: 0.78rem; color: var(--text-light); font-weight: 500; margin-top: 4px; }
 
-        /* SEARCH SECTION */
-        .search-section {
-            padding: 60px 40px; background: white;
-            border-top: 1px solid var(--border);
-        }
+        .search-section { padding: 60px 40px; background: white; border-top: 1px solid var(--border); }
         .search-section .container { max-width: 1200px; margin: 0 auto; }
-        .section-title {
-            text-align: center; margin-bottom: 40px;
-        }
-        .section-title h2 {
-            font-size: 2rem; font-weight: 700; color: var(--secondary); margin-bottom: 8px;
-        }
+        .section-title { text-align: center; margin-bottom: 40px; }
+        .section-title h2 { font-size: 2rem; font-weight: 700; color: var(--secondary); margin-bottom: 8px; }
         .section-title p { color: var(--text-light); font-size: 1rem; }
-        .search-box {
-            max-width: 700px; margin: 0 auto 40px; position: relative;
-        }
+        .search-box { max-width: 700px; margin: 0 auto 40px; position: relative; }
         .search-box input {
             width: 100%; padding: 16px 24px 16px 56px; border-radius: 50px;
             border: 2px solid var(--border); font-size: 1rem;
-            font-family: 'Poppins', sans-serif; transition: var(--transition);
-            background: var(--bg);
+            font-family: 'Poppins', sans-serif; transition: var(--transition); background: var(--bg);
         }
         .search-box input:focus {
             outline: none; border-color: var(--primary);
-            box-shadow: 0 0 0 4px rgba(14,165,233,0.1);
-            background: white;
+            box-shadow: 0 0 0 4px rgba(14,165,233,0.1); background: white;
         }
         .search-box .search-icon {
             position: absolute; left: 20px; top: 50%; transform: translateY(-50%);
@@ -255,28 +219,22 @@
             font-family: 'Poppins', sans-serif;
         }
 
-        /* BOOK CARDS */
         .books-grid {
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 24px;
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px;
         }
         .book-card {
             background: white; border-radius: var(--radius-lg); overflow: hidden;
-            border: 1px solid var(--border); transition: var(--transition);
-            cursor: pointer;
+            border: 1px solid var(--border); transition: var(--transition); cursor: pointer;
         }
         .book-card:hover {
-            transform: translateY(-8px); box-shadow: var(--shadow-lg);
-            border-color: var(--primary-light);
+            transform: translateY(-8px); box-shadow: var(--shadow-lg); border-color: var(--primary-light);
         }
         .book-cover {
             height: 200px; background: linear-gradient(135deg, var(--primary-ultra-light), #ede9fe);
             display: flex; align-items: center; justify-content: center;
             font-size: 3rem; color: var(--primary); position: relative;
         }
-        .book-cover img {
-            width: 100%; height: 100%; object-fit: cover;
-        }
+        .book-cover img { width: 100%; height: 100%; object-fit: cover; }
         .book-badge {
             position: absolute; top: 12px; right: 12px; padding: 4px 12px;
             border-radius: 20px; font-size: 0.72rem; font-weight: 600;
@@ -302,10 +260,8 @@
         }
         .book-meta span { font-size: 0.78rem; color: var(--text-muted); }
 
-        /* FOOTER */
         .footer {
-            background: var(--secondary); color: white; padding: 40px;
-            text-align: center;
+            background: var(--secondary); color: white; padding: 40px; text-align: center;
         }
         .footer p { opacity: 0.7; font-size: 0.88rem; }
         .footer .footer-links { margin-top: 16px; }
@@ -315,7 +271,6 @@
         }
         .footer .footer-links a:hover { color: white; }
 
-        /* ==================== LOGIN MODAL ==================== */
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(15,23,42,0.6); backdrop-filter: blur(8px);
@@ -352,8 +307,7 @@
         .form-group input, .form-group select, .form-group textarea {
             width: 100%; padding: 12px 16px; border-radius: 10px;
             border: 2px solid var(--border); font-size: 0.9rem;
-            font-family: 'Poppins', sans-serif; transition: var(--transition);
-            background: var(--bg);
+            font-family: 'Poppins', sans-serif; transition: var(--transition); background: var(--bg);
         }
         .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
             outline: none; border-color: var(--primary);
@@ -368,15 +322,11 @@
             color: var(--primary); font-weight: 600; text-decoration: none; cursor: pointer;
         }
 
-        /* ==================== DASHBOARD LAYOUT ==================== */
         .dashboard { display: flex; min-height: 100vh; }
-
-        /* SIDEBAR */
         .sidebar {
             width: 270px; background: white; border-right: 1px solid var(--border);
             display: flex; flex-direction: column; position: fixed;
-            left: 0; top: 0; bottom: 0; z-index: 100;
-            transition: var(--transition);
+            left: 0; top: 0; bottom: 0; z-index: 100; transition: var(--transition);
         }
         .sidebar-header {
             padding: 20px 24px; border-bottom: 1px solid var(--border);
@@ -390,7 +340,6 @@
         }
         .sidebar-header .logo-text h3 { font-size: 0.9rem; font-weight: 700; color: var(--secondary); }
         .sidebar-header .logo-text span { font-size: 0.7rem; color: var(--text-light); }
-
         .sidebar-menu { padding: 16px 12px; flex: 1; overflow-y: auto; }
         .menu-label {
             font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
@@ -409,13 +358,9 @@
             color: white; box-shadow: 0 4px 12px rgba(14,165,233,0.3);
         }
         .menu-item i { width: 20px; text-align: center; font-size: 1rem; }
-
-        .sidebar-footer {
-            padding: 16px 12px; border-top: 1px solid var(--border);
-        }
+        .sidebar-footer { padding: 16px 12px; border-top: 1px solid var(--border); }
         .user-info {
-            display: flex; align-items: center; gap: 12px; padding: 8px 12px;
-            margin-bottom: 8px;
+            display: flex; align-items: center; gap: 12px; padding: 8px 12px; margin-bottom: 8px;
         }
         .user-avatar {
             width: 40px; height: 40px; border-radius: 10px;
@@ -426,7 +371,6 @@
         .user-details h4 { font-size: 0.85rem; font-weight: 600; color: var(--secondary); }
         .user-details span { font-size: 0.72rem; color: var(--text-light); }
 
-        /* MAIN CONTENT */
         .main-content {
             flex: 1; margin-left: 270px; padding: 0;
             background: var(--bg); min-height: 100vh;
@@ -434,8 +378,7 @@
         .topbar {
             background: white; padding: 16px 32px; display: flex;
             align-items: center; justify-content: space-between;
-            border-bottom: 1px solid var(--border); position: sticky;
-            top: 0; z-index: 50;
+            border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 50;
         }
         .topbar h2 { font-size: 1.3rem; font-weight: 700; color: var(--secondary); }
         .topbar-actions { display: flex; gap: 12px; align-items: center; }
@@ -445,10 +388,8 @@
             justify-content: center; color: var(--text-light); transition: var(--transition);
         }
         .topbar-actions .btn-icon:hover { background: var(--primary-ultra-light); color: var(--primary); }
-
         .content-area { padding: 32px; }
 
-        /* DASHBOARD STATS */
         .dash-stats {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 20px; margin-bottom: 32px;
@@ -461,8 +402,7 @@
         .dash-stat-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
         .dash-stat-icon {
             width: 56px; height: 56px; border-radius: 14px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.4rem;
+            display: flex; align-items: center; justify-content: center; font-size: 1.4rem;
         }
         .dash-stat-card:nth-child(1) .dash-stat-icon { background: linear-gradient(135deg, #dbeafe, #bfdbfe); color: #2563eb; }
         .dash-stat-card:nth-child(2) .dash-stat-icon { background: linear-gradient(135deg, #ede9fe, #ddd6fe); color: #7c3aed; }
@@ -471,7 +411,6 @@
         .dash-stat-info h3 { font-size: 1.6rem; font-weight: 800; color: var(--secondary); }
         .dash-stat-info p { font-size: 0.82rem; color: var(--text-light); font-weight: 500; }
 
-        /* DATA TABLE */
         .data-card {
             background: white; border-radius: var(--radius-lg);
             border: 1px solid var(--border); overflow: hidden; margin-bottom: 24px;
@@ -483,9 +422,7 @@
         }
         .data-card-header h3 { font-size: 1.1rem; font-weight: 700; color: var(--secondary); }
         .data-card-body { padding: 0; overflow-x: auto; }
-        .data-table {
-            width: 100%; border-collapse: collapse; font-size: 0.85rem;
-        }
+        .data-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
         .data-table th {
             padding: 14px 20px; text-align: left; background: var(--bg);
             font-weight: 600; color: var(--text-light); font-size: 0.78rem;
@@ -519,35 +456,23 @@
         .action-btn:hover { background: var(--primary-ultra-light); color: var(--primary); border-color: var(--primary-light); }
         .action-btn.delete:hover { background: rgba(239,68,68,0.1); color: var(--danger); border-color: var(--danger); }
 
-        /* FILTER BAR */
-        .filter-bar {
-            display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
-        }
+        .filter-bar { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
         .filter-bar input, .filter-bar select {
             padding: 8px 16px; border-radius: 8px; border: 1px solid var(--border);
             font-family: 'Poppins', sans-serif; font-size: 0.85rem;
             background: var(--bg); transition: var(--transition);
         }
-        .filter-bar input:focus, .filter-bar select:focus {
-            outline: none; border-color: var(--primary);
-        }
+        .filter-bar input:focus, .filter-bar select:focus { outline: none; border-color: var(--primary); }
 
-        /* EMPTY STATE */
-        .empty-state {
-            text-align: center; padding: 60px 20px; color: var(--text-muted);
-        }
+        .empty-state { text-align: center; padding: 60px 20px; color: var(--text-muted); }
         .empty-state i { font-size: 3rem; margin-bottom: 16px; color: var(--primary-light); }
         .empty-state h3 { font-size: 1.1rem; color: var(--text-light); margin-bottom: 8px; }
         .empty-state p { font-size: 0.88rem; }
 
-        /* LARGE MODAL */
         .modal-lg { max-width: 600px; }
         .modal-xl { max-width: 800px; max-height: 90vh; overflow-y: auto; }
 
-        /* BOOK DETAIL MODAL */
-        .book-detail-header {
-            display: flex; gap: 24px; margin-bottom: 24px;
-        }
+        .book-detail-header { display: flex; gap: 24px; margin-bottom: 24px; }
         .book-detail-cover {
             width: 150px; height: 200px; border-radius: var(--radius);
             background: linear-gradient(135deg, var(--primary-ultra-light), #ede9fe);
@@ -556,30 +481,83 @@
         }
         .book-detail-cover img { width: 100%; height: 100%; object-fit: cover; }
         .book-detail-info h2 { font-size: 1.3rem; margin-bottom: 8px; }
-        .book-detail-info .detail-row {
-            display: flex; gap: 8px; margin-bottom: 6px; font-size: 0.88rem;
-        }
+        .book-detail-info .detail-row { display: flex; gap: 8px; margin-bottom: 6px; font-size: 0.88rem; }
         .book-detail-info .detail-label { color: var(--text-light); font-weight: 500; min-width: 100px; }
         .book-detail-info .detail-value { color: var(--text); font-weight: 600; }
 
-        /* TABS */
-        .tabs { display: flex; gap: 4px; margin-bottom: 24px; border-bottom: 2px solid var(--border); padding-bottom: 0; }
-        .tab-btn {
-            padding: 10px 20px; border: none; background: none; cursor: pointer;
-            font-family: 'Poppins', sans-serif; font-size: 0.88rem; font-weight: 500;
-            color: var(--text-light); border-bottom: 2px solid transparent;
-            margin-bottom: -2px; transition: var(--transition);
-        }
-        .tab-btn.active { color: var(--primary); border-bottom-color: var(--primary); }
-        .tab-btn:hover { color: var(--primary); }
-
-        /* MOBILE RESPONSIVE */
         .mobile-menu-btn {
             display: none; width: 40px; height: 40px; border-radius: 10px;
             border: 1px solid var(--border); background: white; cursor: pointer;
             align-items: center; justify-content: center; font-size: 1.2rem;
             color: var(--text-light);
         }
+
+        /* ==================== CATEGORY TOOLS ==================== */
+        .category-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px; margin-bottom: 24px;
+        }
+        .category-card {
+            background: white; border-radius: var(--radius-lg); padding: 20px;
+            border: 1px solid var(--border); transition: var(--transition);
+            display: flex; align-items: flex-start; gap: 16px;
+            position: relative; overflow: hidden;
+        }
+        .category-card::before {
+            content: ''; position: absolute; top: 0; left: 0;
+            width: 4px; height: 100%; background: var(--cat-color, var(--primary));
+        }
+        .category-card:hover {
+            transform: translateY(-4px); box-shadow: var(--shadow-md);
+            border-color: var(--primary-light);
+        }
+        .category-icon {
+            width: 48px; height: 48px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; color: white; flex-shrink: 0;
+        }
+        .category-info { flex: 1; min-width: 0; }
+        .category-info h4 {
+            font-size: 1rem; font-weight: 700; color: var(--secondary); margin-bottom: 4px;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        }
+        .category-info p {
+            font-size: 0.78rem; color: var(--text-light); line-height: 1.5; margin-bottom: 8px;
+            display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+        }
+        .category-meta { display: flex; align-items: center; gap: 8px; }
+        .category-book-count {
+            background: var(--primary-ultra-light); color: var(--primary);
+            font-size: 0.75rem; font-weight: 600; padding: 3px 10px; border-radius: 20px;
+        }
+        .category-actions { display: flex; gap: 6px; flex-shrink: 0; }
+        .color-grid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 8px; margin-top: 8px; }
+        .color-swatch {
+            width: 32px; height: 32px; border-radius: 8px;
+            cursor: pointer; border: 2px solid transparent; transition: var(--transition);
+        }
+        .color-swatch:hover, .color-swatch.selected {
+            border-color: var(--secondary); transform: scale(1.1);
+        }
+        .icon-grid {
+            display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px;
+            max-height: 200px; overflow-y: auto; margin-top: 8px; padding: 4px;
+        }
+        .icon-item {
+            width: 40px; height: 40px; border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; border: 2px solid var(--border);
+            color: var(--text-light); transition: var(--transition); font-size: 1rem;
+        }
+        .icon-item:hover, .icon-item.selected {
+            border-color: var(--primary); background: var(--primary-ultra-light); color: var(--primary);
+        }
+        .cat-stat-bar {
+            background: var(--bg); border-radius: var(--radius);
+            padding: 16px 20px; margin-bottom: 16px;
+            display: flex; gap: 24px; flex-wrap: wrap; align-items: center;
+        }
+        .cat-stat-item { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; }
 
         @media (max-width: 768px) {
             .navbar { padding: 0 16px; }
@@ -590,20 +568,20 @@
             .hero-visual { order: -1; }
             .hero-card { padding: 24px; }
             .search-section { padding: 40px 16px; }
-
             .sidebar { transform: translateX(-100%); }
             .sidebar.mobile-open { transform: translateX(0); box-shadow: var(--shadow-xl); }
             .main-content { margin-left: 0; }
             .content-area { padding: 16px; }
             .mobile-menu-btn { display: flex; }
-
             .topbar { padding: 12px 16px; }
             .dash-stats { grid-template-columns: 1fr 1fr; gap: 12px; }
             .books-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
             .navbar-links .hide-mobile { display: none; }
             .data-card-header { flex-direction: column; align-items: flex-start; }
+            .category-grid { grid-template-columns: 1fr; }
+            .color-grid { grid-template-columns: repeat(6, 1fr); }
+            .icon-grid { grid-template-columns: repeat(5, 1fr); }
         }
-
         @media (max-width: 480px) {
             .dash-stats { grid-template-columns: 1fr; }
             .books-grid { grid-template-columns: 1fr; }
@@ -611,170 +589,12 @@
             .book-detail-header { flex-direction: column; align-items: center; text-align: center; }
         }
 
-        /* Fade animations */
         .fade-in { animation: fadeIn 0.4s ease; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* Floating particles */
-        .particle {
-            position: absolute; border-radius: 50%; pointer-events: none;
-            animation: floatParticle 6s ease-in-out infinite;
-        }
-        @keyframes floatParticle {
-            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.6; }
-            50% { transform: translateY(-20px) rotate(180deg); opacity: 1; }
-        }
-        /* ==================== CATEGORY TOOLS ==================== */
-.category-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 16px;
-    margin-bottom: 24px;
-}
-
-.category-card {
-    background: white;
-    border-radius: var(--radius-lg);
-    padding: 20px;
-    border: 1px solid var(--border);
-    transition: var(--transition);
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    position: relative;
-    overflow: hidden;
-}
-
-.category-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 4px; height: 100%;
-    background: var(--cat-color, var(--primary));
-}
-
-.category-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-md);
-    border-color: var(--primary-light);
-}
-
-.category-icon {
-    width: 48px; height: 48px;
-    border-radius: 12px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.2rem; color: white; flex-shrink: 0;
-}
-
-.category-info { flex: 1; min-width: 0; }
-
-.category-info h4 {
-    font-size: 1rem; font-weight: 700;
-    color: var(--secondary); margin-bottom: 4px;
-    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-}
-
-.category-info p {
-    font-size: 0.78rem; color: var(--text-light);
-    line-height: 1.5; margin-bottom: 8px;
-    display: -webkit-box; -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical; overflow: hidden;
-}
-
-.category-meta {
-    display: flex; align-items: center; gap: 8px;
-}
-
-.category-book-count {
-    background: var(--primary-ultra-light);
-    color: var(--primary); font-size: 0.75rem;
-    font-weight: 600; padding: 3px 10px;
-    border-radius: 20px;
-}
-
-.category-actions {
-    display: flex; gap: 6px; flex-shrink: 0;
-}
-
-/* Color Picker */
-.color-grid {
-    display: grid; grid-template-columns: repeat(8, 1fr); gap: 8px;
-    margin-top: 8px;
-}
-
-.color-swatch {
-    width: 32px; height: 32px; border-radius: 8px;
-    cursor: pointer; border: 2px solid transparent;
-    transition: var(--transition);
-}
-
-.color-swatch:hover, .color-swatch.selected {
-    border-color: var(--secondary);
-    transform: scale(1.1);
-}
-
-/* Icon Picker */
-.icon-grid {
-    display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px;
-    max-height: 200px; overflow-y: auto; margin-top: 8px;
-    padding: 4px;
-}
-
-.icon-item {
-    width: 40px; height: 40px; border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
-    cursor: pointer; border: 2px solid var(--border);
-    color: var(--text-light); transition: var(--transition);
-    font-size: 1rem;
-}
-
-.icon-item:hover, .icon-item.selected {
-    border-color: var(--primary);
-    background: var(--primary-ultra-light);
-    color: var(--primary);
-}
-
-/* Category Stats Bar */
-.cat-stat-bar {
-    background: var(--bg); border-radius: var(--radius);
-    padding: 16px 20px; margin-bottom: 16px;
-    display: flex; gap: 24px; flex-wrap: wrap;
-    align-items: center;
-}
-
-.cat-stat-item {
-    display: flex; align-items: center; gap: 8px;
-    font-size: 0.85rem;
-}
-
-.cat-stat-dot {
-    width: 10px; height: 10px; border-radius: 50%;
-}
-
-/* Preview Badge */
-.preview-badge {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 8px 16px; border-radius: 10px;
-    font-size: 0.85rem; font-weight: 600; color: white;
-    margin-top: 8px;
-}
-
-@media (max-width: 768px) {
-    .category-grid {
-        grid-template-columns: 1fr;
-    }
-    .color-grid {
-        grid-template-columns: repeat(6, 1fr);
-    }
-    .icon-grid {
-        grid-template-columns: repeat(5, 1fr);
-    }
-}
     </style>
 </head>
 <body>
 
-<!-- Loading Screen -->
 <div class="loading-screen" id="loadingScreen">
     <div class="loader">
         <div class="loader-icon"></div>
@@ -783,7 +603,6 @@
     </div>
 </div>
 
-<!-- Notification -->
 <div class="notification" id="notification">
     <i class="fas fa-info-circle"></i>
     <span id="notifMessage"></span>
@@ -791,25 +610,18 @@
 
 <!-- ==================== PUBLIC PAGE ==================== -->
 <div class="public-page" id="publicPage">
-    <!-- Navbar -->
     <nav class="navbar">
         <a href="#" class="navbar-brand" onclick="showPublicPage()">
             <div class="logo-icon"><i class="fas fa-book-open-reader"></i></div>
-            <div>
-                Perpustakaan STAI
-                <span>Al-Musdariyah Cimahi</span>
-            </div>
+            <div>Perpustakaan STAI<span>Al-Musdariyah Cimahi</span></div>
         </a>
         <div class="navbar-links">
             <a href="#katalog" class="hide-mobile"><i class="fas fa-books"></i> Katalog</a>
             <a href="#" class="hide-mobile" onclick="showAbout()"><i class="fas fa-info-circle"></i> Tentang</a>
-            <button class="btn-login" onclick="showLoginModal()">
-                <i class="fas fa-sign-in-alt"></i> Login
-            </button>
+            <button class="btn-login" onclick="showLoginModal()"><i class="fas fa-sign-in-alt"></i> Login</button>
         </div>
     </nav>
 
-    <!-- Hero -->
     <section class="hero">
         <div class="hero-content">
             <div class="hero-text fade-in">
@@ -844,7 +656,7 @@
                         </div>
                         <div class="stat-item">
                             <div class="stat-icon"><i class="fas fa-star"></i></div>
-                            <div class="stat-number" id="pubCategories">10</div>
+                            <div class="stat-number" id="pubCategories">0</div>
                             <div class="stat-label">Kategori</div>
                         </div>
                     </div>
@@ -853,7 +665,6 @@
         </div>
     </section>
 
-    <!-- Search & Catalog -->
     <section class="search-section" id="katalogSection">
         <div class="container">
             <div class="section-title">
@@ -874,13 +685,10 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
-        <p>© 2025 Perpustakaan STAI Al-Musdariyah Cimahi. All rights reserved.</p>
+        <p>&copy; 2025 Perpustakaan STAI Al-Musdariyah Cimahi. All rights reserved.</p>
         <div class="footer-links">
-            <a href="#">Tentang Kami</a>
-            <a href="#">Kontak</a>
-            <a href="#">Kebijakan Privasi</a>
+            <a href="#">Tentang Kami</a><a href="#">Kontak</a><a href="#">Kebijakan Privasi</a>
         </div>
     </footer>
 </div>
@@ -907,9 +715,7 @@
         <button class="btn btn-primary btn-full" onclick="doLogin()" id="loginBtn">
             <i class="fas fa-sign-in-alt"></i> Masuk
         </button>
-        <div class="form-footer">
-            Belum punya akun? <a onclick="showRegisterModal()">Daftar Sekarang</a>
-        </div>
+        <div class="form-footer">Belum punya akun? <a onclick="showRegisterModal()">Daftar Sekarang</a></div>
     </div>
 </div>
 
@@ -919,77 +725,43 @@
         <button class="modal-close" onclick="closeModal('registerModal')"><i class="fas fa-times"></i></button>
         <h2>Daftar Anggota Baru</h2>
         <p class="subtitle">Lengkapi data diri untuk mendaftar sebagai anggota perpustakaan</p>
-        <div class="form-group">
-            <label>Nama Lengkap</label>
-            <input type="text" id="regNama" placeholder="Nama lengkap">
-        </div>
+        <div class="form-group"><label>Nama Lengkap</label><input type="text" id="regNama" placeholder="Nama lengkap"></div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-            <div class="form-group">
-                <label>NIM</label>
-                <input type="text" id="regNim" placeholder="Nomor Induk Mahasiswa">
-            </div>
-            <div class="form-group">
-                <label>Program Studi</label>
-                <select id="regProdi">
-                    <option value="">Pilih Prodi</option>
-                    <option>Pendidikan Agama Islam</option>
-                    <option>Komunikasi Penyiaran Islam</option>
-                    <option>Manajemen Dakwah</option>
-                    <option>Ekonomi Syariah</option>
-                    <option>Hukum Keluarga Islam</option>
+            <div class="form-group"><label>NIM</label><input type="text" id="regNim" placeholder="Nomor Induk Mahasiswa"></div>
+            <div class="form-group"><label>Program Studi</label>
+                <select id="regProdi"><option value="">Pilih Prodi</option>
+                    <option>Pendidikan Agama Islam</option><option>Komunikasi Penyiaran Islam</option>
+                    <option>Manajemen Dakwah</option><option>Ekonomi Syariah</option><option>Hukum Keluarga Islam</option>
                 </select>
             </div>
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-            <div class="form-group">
-                <label>Email</label>
-                <input type="email" id="regEmail" placeholder="email@example.com">
-            </div>
-            <div class="form-group">
-                <label>No. HP</label>
-                <input type="text" id="regPhone" placeholder="08xxxxxxxxxx">
-            </div>
+            <div class="form-group"><label>Email</label><input type="email" id="regEmail" placeholder="email@example.com"></div>
+            <div class="form-group"><label>No. HP</label><input type="text" id="regPhone" placeholder="08xxxxxxxxxx"></div>
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-            <div class="form-group">
-                <label>Username</label>
-                <input type="text" id="regUsername" placeholder="Username untuk login">
-            </div>
-            <div class="form-group">
-                <label>Password</label>
-                <input type="password" id="regPassword" placeholder="Min. 6 karakter">
-            </div>
+            <div class="form-group"><label>Username</label><input type="text" id="regUsername" placeholder="Username untuk login"></div>
+            <div class="form-group"><label>Password</label><input type="password" id="regPassword" placeholder="Min. 6 karakter"></div>
         </div>
         <button class="btn btn-primary btn-full" onclick="doRegister()" id="registerBtn">
             <i class="fas fa-user-plus"></i> Daftar Sekarang
         </button>
-        <div class="form-footer">
-            Sudah punya akun? <a onclick="showLoginModal()">Masuk</a>
-        </div>
+        <div class="form-footer">Sudah punya akun? <a onclick="showLoginModal()">Masuk</a></div>
     </div>
 </div>
 
 <!-- ==================== DASHBOARD ==================== -->
 <div class="dashboard" id="dashboardPage" style="display:none;">
-    <!-- Sidebar -->
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <div class="logo-icon"><i class="fas fa-book-open-reader"></i></div>
-            <div class="logo-text">
-                <h3>Perpustakaan</h3>
-                <span>STAI Al-Musdariyah</span>
-            </div>
+            <div class="logo-text"><h3>Perpustakaan</h3><span>STAI Al-Musdariyah</span></div>
         </div>
-        <div class="sidebar-menu" id="sidebarMenu">
-            <!-- Menu items will be generated by JS -->
-        </div>
+        <div class="sidebar-menu" id="sidebarMenu"></div>
         <div class="sidebar-footer">
             <div class="user-info">
                 <div class="user-avatar" id="userAvatar">A</div>
-                <div class="user-details">
-                    <h4 id="userName">Admin</h4>
-                    <span id="userRole">Administrator</span>
-                </div>
+                <div class="user-details"><h4 id="userName">Admin</h4><span id="userRole">Administrator</span></div>
             </div>
             <button class="menu-item" onclick="doLogout()" style="color:var(--danger);">
                 <i class="fas fa-sign-out-alt"></i> Keluar
@@ -997,13 +769,10 @@
         </div>
     </aside>
 
-    <!-- Main Content -->
     <div class="main-content">
         <div class="topbar">
             <div style="display:flex;align-items:center;gap:12px;">
-                <button class="mobile-menu-btn" onclick="toggleSidebar()">
-                    <i class="fas fa-bars"></i>
-                </button>
+                <button class="mobile-menu-btn" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
                 <h2 id="pageTitle">Dashboard</h2>
             </div>
             <div class="topbar-actions">
@@ -1011,17 +780,13 @@
                 <button class="btn-icon" onclick="doLogout()"><i class="fas fa-sign-out-alt"></i></button>
             </div>
         </div>
-        <div class="content-area" id="contentArea">
-            <!-- Content loaded dynamically -->
-        </div>
+        <div class="content-area" id="contentArea"></div>
     </div>
 </div>
 
-<!-- ==================== DYNAMIC MODALS CONTAINER ==================== -->
 <div id="dynamicModals"></div>
 
 <script>
-// ==================== CONFIGURATION ====================
 const API_URL = 'https://script.google.com/macros/s/AKfycbyrLEcXA2sPPTfP7y0GZkZN13Au1WF9DxSYiGQIOw49Oh-tgXB1hSYtrQxj_jZflqyB/exec';
 
 let currentUser = null;
@@ -1030,14 +795,26 @@ let allMembers = [];
 let allBorrowings = [];
 let allCategories = [];
 
-// ==================== API CALLS ====================
+const CATEGORY_COLORS = [
+    '#0ea5e9','#8b5cf6','#10b981','#f59e0b','#ef4444',
+    '#06b6d4','#ec4899','#6366f1','#84cc16','#64748b',
+    '#f97316','#14b8a6','#a855f7','#0284c7','#059669'
+];
+const CATEGORY_ICONS = [
+    'fa-book','fa-book-open','fa-bookmark','fa-graduation-cap',
+    'fa-mosque','fa-moon','fa-star','fa-heart','fa-scale-balanced',
+    'fa-quran','fa-language','fa-landmark','fa-pen-nib',
+    'fa-scroll','fa-globe','fa-users','fa-lightbulb',
+    'fa-magnifying-glass','fa-atom','fa-leaf'
+];
+
+// ==================== API ====================
 async function apiCall(params) {
     try {
         const url = new URL(API_URL);
         Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
         const response = await fetch(url.toString());
-        const data = await response.json();
-        return data;
+        return await response.json();
     } catch (error) {
         console.error('API Error:', error);
         showNotification('Gagal terhubung ke server', 'error');
@@ -1062,8 +839,6 @@ window.addEventListener('load', () => {
         document.getElementById('loadingScreen').classList.add('hidden');
         loadPublicData();
     }, 1500);
-
-    // Check session
     const savedUser = localStorage.getItem('libUser');
     if (savedUser) {
         currentUser = JSON.parse(savedUser);
@@ -1072,36 +847,20 @@ window.addEventListener('load', () => {
 });
 
 // ==================== MODAL HELPERS ====================
-function showLoginModal() {
-    closeModal('registerModal');
-    document.getElementById('loginModal').classList.add('active');
-}
-
-function showRegisterModal() {
-    closeModal('loginModal');
-    document.getElementById('registerModal').classList.add('active');
-}
-
-function closeModal(id) {
-    document.getElementById(id).classList.remove('active');
-}
-
-function closeDynamicModal(id) {
-    const modal = document.getElementById(id);
-    if (modal) modal.remove();
-}
-
+function showLoginModal() { closeModal('registerModal'); document.getElementById('loginModal').classList.add('active'); }
+function showRegisterModal() { closeModal('loginModal'); document.getElementById('registerModal').classList.add('active'); }
+function closeModal(id) { document.getElementById(id).classList.remove('active'); }
+function closeDynamicModal(id) { const m = document.getElementById(id); if (m) m.remove(); }
 function showDynamicModal(id, content, size = '') {
     closeDynamicModal(id);
-    const html = `
+    document.getElementById('dynamicModals').insertAdjacentHTML('beforeend', `
         <div class="modal-overlay active" id="${id}" onclick="if(event.target===this)closeDynamicModal('${id}')">
             <div class="modal ${size}">
                 <button class="modal-close" onclick="closeDynamicModal('${id}')"><i class="fas fa-times"></i></button>
                 ${content}
             </div>
         </div>
-    `;
-    document.getElementById('dynamicModals').insertAdjacentHTML('beforeend', html);
+    `);
 }
 
 // ==================== PUBLIC PAGE ====================
@@ -1114,17 +873,23 @@ function showPublicPage() {
 }
 
 async function loadPublicData() {
-    const stats = await apiCall({ action: 'getStats' });
+    const [stats, books, cats] = await Promise.all([
+        apiCall({ action: 'getStats' }),
+        apiCall({ action: 'getBooks' }),
+        apiCall({ action: 'getCategories' })
+    ]);
     if (stats.status === 'success') {
         animateCounter('pubTotalBooks', stats.data.totalBooks);
         animateCounter('pubTotalMembers', stats.data.totalMembers);
         animateCounter('pubActiveBorrows', stats.data.activeBorrows);
     }
-
-    const books = await apiCall({ action: 'getBooks' });
     if (books.status === 'success') {
         allBooks = books.data;
         renderPublicBooks(allBooks);
+    }
+    if (cats.status === 'success') {
+        allCategories = cats.data;
+        animateCounter('pubCategories', allCategories.length);
     }
 }
 
@@ -1141,7 +906,7 @@ function animateCounter(id, target) {
 
 function renderPublicBooks(books) {
     const grid = document.getElementById('publicBooksGrid');
-    if (books.length === 0) {
+    if (!books.length) {
         grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1;"><i class="fas fa-book-open"></i><h3>Belum ada buku</h3><p>Koleksi buku akan segera ditambahkan</p></div>`;
         return;
     }
@@ -1149,9 +914,7 @@ function renderPublicBooks(books) {
         <div class="book-card" onclick="showBookDetail('${book.id}')">
             <div class="book-cover">
                 ${book.cover_url ? `<img src="${book.cover_url}" alt="${book.judul}" onerror="this.parentElement.innerHTML='<i class=\\'fas fa-book\\'></i>'">` : '<i class="fas fa-book"></i>'}
-                <span class="book-badge ${book.tersedia > 0 ? 'badge-available' : 'badge-unavailable'}">
-                    ${book.tersedia > 0 ? 'Tersedia' : 'Dipinjam'}
-                </span>
+                <span class="book-badge ${book.tersedia > 0 ? 'badge-available' : 'badge-unavailable'}">${book.tersedia > 0 ? 'Tersedia' : 'Dipinjam'}</span>
             </div>
             <div class="book-info">
                 <span class="book-category">${book.kategori || 'Umum'}</span>
@@ -1168,15 +931,12 @@ function renderPublicBooks(books) {
 
 function publicSearchBooks(event) {
     if (event && event.key && event.key !== 'Enter') return;
-    const query = document.getElementById('publicSearch').value.toLowerCase();
-    if (!query) { renderPublicBooks(allBooks); return; }
-    const filtered = allBooks.filter(b =>
-        b.judul.toLowerCase().includes(query) ||
-        b.pengarang.toLowerCase().includes(query) ||
-        (b.isbn && b.isbn.toLowerCase().includes(query)) ||
-        (b.kategori && b.kategori.toLowerCase().includes(query))
-    );
-    renderPublicBooks(filtered);
+    const q = document.getElementById('publicSearch').value.toLowerCase();
+    if (!q) { renderPublicBooks(allBooks); return; }
+    renderPublicBooks(allBooks.filter(b =>
+        b.judul.toLowerCase().includes(q) || b.pengarang.toLowerCase().includes(q) ||
+        (b.isbn && b.isbn.toLowerCase().includes(q)) || (b.kategori && b.kategori.toLowerCase().includes(q))
+    ));
 }
 
 function showBookDetail(bookId) {
@@ -1196,11 +956,7 @@ function showBookDetail(bookId) {
                 <div class="detail-row"><span class="detail-label">ISBN</span><span class="detail-value">${book.isbn || '-'}</span></div>
                 <div class="detail-row"><span class="detail-label">Rak</span><span class="detail-value">${book.rak || '-'}</span></div>
                 <div class="detail-row"><span class="detail-label">Ketersediaan</span>
-                    <span class="detail-value">
-                        <span class="status-badge ${book.tersedia > 0 ? 'status-active' : 'status-overdue'}">
-                            ${book.tersedia}/${book.jumlah} ${book.tersedia > 0 ? 'Tersedia' : 'Habis'}
-                        </span>
-                    </span>
+                    <span class="detail-value"><span class="status-badge ${book.tersedia > 0 ? 'status-active' : 'status-overdue'}">${book.tersedia}/${book.jumlah} ${book.tersedia > 0 ? 'Tersedia' : 'Habis'}</span></span>
                 </div>
             </div>
         </div>
@@ -1213,25 +969,17 @@ async function doLogin() {
     const username = document.getElementById('loginUsername').value.trim();
     const password = document.getElementById('loginPassword').value.trim();
     if (!username || !password) { showNotification('Username dan password harus diisi', 'warning'); return; }
-
     const btn = document.getElementById('loginBtn');
-    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memproses...';
-    btn.disabled = true;
-
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memproses...'; btn.disabled = true;
     const result = await apiCall({ action: 'login', username, password });
-
-    btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Masuk';
-    btn.disabled = false;
-
+    btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Masuk'; btn.disabled = false;
     if (result.status === 'success') {
         currentUser = result.data;
         localStorage.setItem('libUser', JSON.stringify(currentUser));
         closeModal('loginModal');
         showNotification(`Selamat datang, ${currentUser.nama}!`, 'success');
         showDashboard();
-    } else {
-        showNotification(result.message, 'error');
-    }
+    } else { showNotification(result.message, 'error'); }
 }
 
 async function doRegister() {
@@ -1244,34 +992,19 @@ async function doRegister() {
         username: document.getElementById('regUsername').value.trim(),
         password: document.getElementById('regPassword').value.trim()
     };
-
-    for (let key in fields) {
-        if (!fields[key]) { showNotification('Semua field harus diisi', 'warning'); return; }
-    }
+    for (let key in fields) { if (!fields[key]) { showNotification('Semua field harus diisi', 'warning'); return; } }
     if (fields.password.length < 6) { showNotification('Password minimal 6 karakter', 'warning'); return; }
-
     const btn = document.getElementById('registerBtn');
-    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memproses...';
-    btn.disabled = true;
-
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memproses...'; btn.disabled = true;
     const result = await apiCall({ action: 'register', ...fields });
-
-    btn.innerHTML = '<i class="fas fa-user-plus"></i> Daftar Sekarang';
-    btn.disabled = false;
-
-    if (result.status === 'success') {
-        showNotification(result.message, 'success');
-        closeModal('registerModal');
-    } else {
-        showNotification(result.message, 'error');
-    }
+    btn.innerHTML = '<i class="fas fa-user-plus"></i> Daftar Sekarang'; btn.disabled = false;
+    if (result.status === 'success') { showNotification(result.message, 'success'); closeModal('registerModal'); }
+    else { showNotification(result.message, 'error'); }
 }
 
 function doLogout() {
-    currentUser = null;
-    localStorage.removeItem('libUser');
-    showPublicPage();
-    showNotification('Berhasil keluar', 'info');
+    currentUser = null; localStorage.removeItem('libUser');
+    showPublicPage(); showNotification('Berhasil keluar', 'info');
 }
 
 // ==================== DASHBOARD ====================
@@ -1279,43 +1012,22 @@ function showDashboard() {
     document.getElementById('publicPage').style.display = 'none';
     document.getElementById('dashboardPage').style.display = 'flex';
     document.getElementById('loadingScreen').classList.add('hidden');
-    setupSidebar();
-    loadDashboard();
+    setupSidebar(); loadDashboard();
 }
 
 function setupSidebar() {
     const menu = document.getElementById('sidebarMenu');
     const isAdmin = currentUser.role === 'admin';
-
     document.getElementById('userAvatar').textContent = currentUser.nama.charAt(0).toUpperCase();
     document.getElementById('userName').textContent = currentUser.nama;
     document.getElementById('userRole').textContent = isAdmin ? 'Administrator' : 'Anggota';
-
     let menuHTML = '<div class="menu-label">Menu Utama</div>';
     menuHTML += `<button class="menu-item active" onclick="loadDashboard()" data-page="dashboard"><i class="fas fa-th-large"></i> Dashboard</button>`;
-
     if (isAdmin) {
         menuHTML += `<button class="menu-item" onclick="loadBooksPage()" data-page="books"><i class="fas fa-book"></i> Data Buku</button>`;
         menuHTML += `<button class="menu-item" onclick="loadMembersPage()" data-page="members"><i class="fas fa-users"></i> Data Anggota</button>`;
         menuHTML += `<button class="menu-item" onclick="loadBorrowingsPage()" data-page="borrowings"><i class="fas fa-exchange-alt"></i> Peminjaman</button>`;
-        if (isAdmin) {
-    menuHTML += `<button class="menu-item" onclick="loadBooksPage()" 
-        data-page="books"><i class="fas fa-book"></i> Data Buku</button>`;
-    menuHTML += `<button class="menu-item" onclick="loadMembersPage()" 
-        data-page="members"><i class="fas fa-users"></i> Data Anggota</button>`;
-    menuHTML += `<button class="menu-item" onclick="loadBorrowingsPage()" 
-        data-page="borrowings"><i class="fas fa-exchange-alt"></i> Peminjaman</button>`;
-    
-    // ✅ TAMBAHKAN INI
-    menuHTML += `<button class="menu-item" onclick="loadCategoriesPage()" 
-        data-page="categories"><i class="fas fa-tags"></i> Kategori Buku</button>`;
-    
-    menuHTML += '<div class="menu-label">Transaksi</div>';
-    menuHTML += `<button class="menu-item" onclick="showBorrowForm()" 
-        data-page="borrow"><i class="fas fa-hand-holding"></i> Pinjam Buku</button>`;
-    menuHTML += `<button class="menu-item" onclick="showReturnForm()" 
-        data-page="return"><i class="fas fa-undo"></i> Pengembalian</button>`;
-}
+        menuHTML += `<button class="menu-item" onclick="loadCategoriesPage()" data-page="categories"><i class="fas fa-tags"></i> Kategori Buku</button>`;
         menuHTML += '<div class="menu-label">Transaksi</div>';
         menuHTML += `<button class="menu-item" onclick="showBorrowForm()" data-page="borrow"><i class="fas fa-hand-holding"></i> Pinjam Buku</button>`;
         menuHTML += `<button class="menu-item" onclick="showReturnForm()" data-page="return"><i class="fas fa-undo"></i> Pengembalian</button>`;
@@ -1324,10 +1036,8 @@ function setupSidebar() {
         menuHTML += `<button class="menu-item" onclick="loadMyBorrowings()" data-page="myborrowings"><i class="fas fa-book-reader"></i> Peminjaman Saya</button>`;
         menuHTML += `<button class="menu-item" onclick="loadMyProfile()" data-page="profile"><i class="fas fa-user-cog"></i> Profil Saya</button>`;
     }
-
     menu.innerHTML = menuHTML;
 }
-    
 
 function setActiveMenu(page) {
     document.querySelectorAll('.menu-item').forEach(item => {
@@ -1336,9 +1046,7 @@ function setActiveMenu(page) {
     });
 }
 
-function toggleSidebar() {
-    document.getElementById('sidebar').classList.toggle('mobile-open');
-}
+function toggleSidebar() { document.getElementById('sidebar').classList.toggle('mobile-open'); }
 
 function refreshData() {
     const activeMenu = document.querySelector('.menu-item.active');
@@ -1351,32 +1059,17 @@ async function loadDashboard() {
     setActiveMenu('dashboard');
     document.getElementById('pageTitle').textContent = 'Dashboard';
     const content = document.getElementById('contentArea');
-
     const isAdmin = currentUser.role === 'admin';
 
     content.innerHTML = `
         <div class="dash-stats" id="dashStats">
-            <div class="dash-stat-card">
-                <div class="dash-stat-icon"><i class="fas fa-book"></i></div>
-                <div class="dash-stat-info"><h3 id="dsTotalBooks">-</h3><p>Total Buku</p></div>
-            </div>
-            <div class="dash-stat-card">
-                <div class="dash-stat-icon"><i class="fas fa-users"></i></div>
-                <div class="dash-stat-info"><h3 id="dsTotalMembers">-</h3><p>Total Anggota</p></div>
-            </div>
-            <div class="dash-stat-card">
-                <div class="dash-stat-icon"><i class="fas fa-exchange-alt"></i></div>
-                <div class="dash-stat-info"><h3 id="dsActiveBorrows">-</h3><p>Peminjaman Aktif</p></div>
-            </div>
-            <div class="dash-stat-card">
-                <div class="dash-stat-icon"><i class="fas fa-coins"></i></div>
-                <div class="dash-stat-info"><h3 id="dsTotalDenda">-</h3><p>Total Denda</p></div>
-            </div>
+            <div class="dash-stat-card"><div class="dash-stat-icon"><i class="fas fa-book"></i></div><div class="dash-stat-info"><h3 id="dsTotalBooks">-</h3><p>Total Buku</p></div></div>
+            <div class="dash-stat-card"><div class="dash-stat-icon"><i class="fas fa-users"></i></div><div class="dash-stat-info"><h3 id="dsTotalMembers">-</h3><p>Total Anggota</p></div></div>
+            <div class="dash-stat-card"><div class="dash-stat-icon"><i class="fas fa-exchange-alt"></i></div><div class="dash-stat-info"><h3 id="dsActiveBorrows">-</h3><p>Peminjaman Aktif</p></div></div>
+            <div class="dash-stat-card"><div class="dash-stat-icon"><i class="fas fa-coins"></i></div><div class="dash-stat-info"><h3 id="dsTotalDenda">-</h3><p>Total Denda</p></div></div>
         </div>
         <div class="data-card">
-            <div class="data-card-header">
-                <h3><i class="fas fa-clock"></i> Peminjaman Terbaru</h3>
-            </div>
+            <div class="data-card-header"><h3><i class="fas fa-clock"></i> Peminjaman Terbaru</h3></div>
             <div class="data-card-body">
                 <table class="data-table">
                     <thead><tr><th>ID</th><th>Buku</th><th>Peminjam</th><th>Tgl Pinjam</th><th>Batas Kembali</th><th>Status</th></tr></thead>
@@ -1386,37 +1079,41 @@ async function loadDashboard() {
         </div>
     `;
 
-    const stats = await apiCall({ action: 'getStats' });
+    const [stats, borrowings] = await Promise.all([
+        apiCall({ action: 'getStats' }),
+        apiCall({ action: isAdmin ? 'getBorrowings' : 'getMemberBorrowings', member_id: currentUser.id })
+    ]);
+
     if (stats.status === 'success') {
         document.getElementById('dsTotalBooks').textContent = stats.data.totalBooks;
         document.getElementById('dsTotalMembers').textContent = stats.data.totalMembers;
         document.getElementById('dsActiveBorrows').textContent = stats.data.activeBorrows;
         document.getElementById('dsTotalDenda').textContent = 'Rp ' + (stats.data.totalDenda || 0).toLocaleString('id');
     }
-
-    const borrowings = await apiCall({ action: isAdmin ? 'getBorrowings' : 'getMemberBorrowings', member_id: currentUser.id });
     if (borrowings.status === 'success') {
         allBorrowings = borrowings.data;
         const recent = borrowings.data.slice(-10).reverse();
         document.getElementById('recentBorrowings').innerHTML = recent.length ? recent.map(b => `
-            <tr>
-                <td><strong>${b.id}</strong></td>
-                <td>${b.judul_buku}</td>
-                <td>${b.nama_peminjam}</td>
-                <td>${formatDate(b.tanggal_pinjam)}</td>
-                <td>${formatDate(b.tanggal_kembali)}</td>
-                <td><span class="status-badge ${getStatusClass(b.status, b.tanggal_kembali)}">${getStatusText(b.status, b.tanggal_kembali)}</span></td>
-            </tr>
+            <tr><td><strong>${b.id}</strong></td><td>${b.judul_buku}</td><td>${b.nama_peminjam}</td>
+            <td>${formatDate(b.tanggal_pinjam)}</td><td>${formatDate(b.tanggal_kembali)}</td>
+            <td><span class="status-badge ${getStatusClass(b.status, b.tanggal_kembali)}">${getStatusText(b.status, b.tanggal_kembali)}</span></td></tr>
         `).join('') : '<tr><td colspan="6" class="empty-state">Belum ada data peminjaman</td></tr>';
     }
 }
 
-// ==================== BOOKS PAGE (ADMIN) ====================
+// ==================== BOOKS PAGE ====================
+function getCategoryOptions(selectedValue = '') {
+    const options = allCategories.length
+        ? allCategories.map(c => `<option value="${c.nama}" ${c.nama === selectedValue ? 'selected' : ''}>${c.nama}</option>`).join('')
+        : ['Agama Islam','Fiqih','Tafsir','Hadits','Akhlak','Sejarah Islam','Pendidikan','Bahasa Arab','Umum','Referensi']
+            .map(c => `<option ${c === selectedValue ? 'selected' : ''}>${c}</option>`).join('');
+    return `<option value="">Pilih Kategori</option>${options}`;
+}
+
 async function loadBooksPage() {
     setActiveMenu('books');
     document.getElementById('pageTitle').textContent = 'Data Buku';
     const content = document.getElementById('contentArea');
-
     content.innerHTML = `
         <div class="data-card">
             <div class="data-card-header">
@@ -1434,45 +1131,32 @@ async function loadBooksPage() {
             </div>
         </div>
     `;
-
-    const result = await apiCall({ action: 'getBooks' });
-    if (result.status === 'success') {
-        allBooks = result.data;
-        renderBooksTable(allBooks);
-    }
+    const [booksRes, catsRes] = await Promise.all([
+        apiCall({ action: 'getBooks' }),
+        apiCall({ action: 'getCategories' })
+    ]);
+    if (catsRes.status === 'success') allCategories = catsRes.data;
+    if (booksRes.status === 'success') { allBooks = booksRes.data; renderBooksTable(allBooks); }
 }
 
 function renderBooksTable(books) {
     const tbody = document.getElementById('booksTableBody');
-    if (!books.length) {
-        tbody.innerHTML = '<tr><td colspan="8"><div class="empty-state"><i class="fas fa-book-open"></i><h3>Belum ada data buku</h3></div></td></tr>';
-        return;
-    }
+    if (!books.length) { tbody.innerHTML = '<tr><td colspan="8"><div class="empty-state"><i class="fas fa-book-open"></i><h3>Belum ada data buku</h3></div></td></tr>'; return; }
     tbody.innerHTML = books.map(b => `
-        <tr>
-            <td><strong>${b.id}</strong></td>
-            <td style="max-width:200px;">${b.judul}</td>
-            <td>${b.pengarang}</td>
-            <td><span class="book-category">${b.kategori || '-'}</span></td>
-            <td>${b.jumlah}</td>
-            <td><span class="status-badge ${b.tersedia > 0 ? 'status-active' : 'status-overdue'}">${b.tersedia}</span></td>
-            <td>${b.rak || '-'}</td>
-            <td>
-                <div class="action-btns">
-                    <button class="action-btn" title="Edit" onclick="showEditBookModal('${b.id}')"><i class="fas fa-pen"></i></button>
-                    <button class="action-btn delete" title="Hapus" onclick="deleteBook('${b.id}','${b.judul.replace(/'/g, "\\'")}')"><i class="fas fa-trash"></i></button>
-                </div>
-            </td>
-        </tr>
+        <tr><td><strong>${b.id}</strong></td><td style="max-width:200px;">${b.judul}</td><td>${b.pengarang}</td>
+        <td><span class="book-category">${b.kategori || '-'}</span></td><td>${b.jumlah}</td>
+        <td><span class="status-badge ${b.tersedia > 0 ? 'status-active' : 'status-overdue'}">${b.tersedia}</span></td>
+        <td>${b.rak || '-'}</td>
+        <td><div class="action-btns">
+            <button class="action-btn" title="Edit" onclick="showEditBookModal('${b.id}')"><i class="fas fa-pen"></i></button>
+            <button class="action-btn delete" title="Hapus" onclick="deleteBook('${b.id}','${b.judul.replace(/'/g, "\\'")}')"><i class="fas fa-trash"></i></button>
+        </div></td></tr>
     `).join('');
 }
 
 function filterBooks() {
     const q = document.getElementById('bookSearchInput').value.toLowerCase();
-    const filtered = allBooks.filter(b =>
-        b.judul.toLowerCase().includes(q) || b.pengarang.toLowerCase().includes(q) || (b.kategori && b.kategori.toLowerCase().includes(q))
-    );
-    renderBooksTable(filtered);
+    renderBooksTable(allBooks.filter(b => b.judul.toLowerCase().includes(q) || b.pengarang.toLowerCase().includes(q) || (b.kategori && b.kategori.toLowerCase().includes(q))));
 }
 
 function showAddBookModal() {
@@ -1490,14 +1174,7 @@ function showAddBookModal() {
             <div class="form-group"><label>Jumlah *</label><input type="number" id="addJumlah" placeholder="1" min="1" value="1"></div>
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-            <div class="form-group"><label>Kategori</label>
-                <select id="addKategori">
-                    <option value="">Pilih Kategori</option>
-                    <option>Agama Islam</option><option>Fiqih</option><option>Tafsir</option>
-                    <option>Hadits</option><option>Akhlak</option><option>Sejarah Islam</option>
-                    <option>Pendidikan</option><option>Bahasa Arab</option><option>Umum</option><option>Referensi</option>
-                </select>
-            </div>
+            <div class="form-group"><label>Kategori</label><select id="addKategori">${getCategoryOptions()}</select></div>
             <div class="form-group"><label>Rak</label><input type="text" id="addRak" placeholder="A1, B2, dll"></div>
         </div>
         <div class="form-group"><label>URL Cover (opsional)</label><input type="text" id="addCover" placeholder="https://..."></div>
@@ -1508,8 +1185,7 @@ function showAddBookModal() {
 
 async function doAddBook() {
     const fields = {
-        action: 'addBook',
-        judul: document.getElementById('addJudul').value.trim(),
+        action: 'addBook', judul: document.getElementById('addJudul').value.trim(),
         pengarang: document.getElementById('addPengarang').value.trim(),
         penerbit: document.getElementById('addPenerbit').value.trim(),
         tahun: document.getElementById('addTahun').value.trim(),
@@ -1520,25 +1196,15 @@ async function doAddBook() {
         cover_url: document.getElementById('addCover').value.trim(),
         deskripsi: document.getElementById('addDeskripsi').value.trim()
     };
-
-    if (!fields.judul || !fields.pengarang || !fields.penerbit) {
-        showNotification('Judul, Pengarang, dan Penerbit harus diisi', 'warning'); return;
-    }
-
+    if (!fields.judul || !fields.pengarang || !fields.penerbit) { showNotification('Judul, Pengarang, dan Penerbit harus diisi', 'warning'); return; }
     const result = await apiCall(fields);
-    if (result.status === 'success') {
-        showNotification('Buku berhasil ditambahkan!', 'success');
-        closeDynamicModal('addBookModal');
-        loadBooksPage();
-    } else {
-        showNotification(result.message, 'error');
-    }
+    if (result.status === 'success') { showNotification('Buku berhasil ditambahkan!', 'success'); closeDynamicModal('addBookModal'); loadBooksPage(); }
+    else { showNotification(result.message, 'error'); }
 }
 
 function showEditBookModal(bookId) {
     const book = allBooks.find(b => b.id === bookId);
     if (!book) return;
-
     showDynamicModal('editBookModal', `
         <h2><i class="fas fa-edit" style="color:var(--primary)"></i> Edit Buku</h2>
         <p class="subtitle">Perbarui informasi buku</p>
@@ -1553,14 +1219,7 @@ function showEditBookModal(bookId) {
             <div class="form-group"><label>Jumlah</label><input type="number" id="editJumlah" value="${book.jumlah}" min="1"></div>
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-            <div class="form-group"><label>Kategori</label>
-                <select id="editKategori">
-                    <option value="">Pilih Kategori</option>
-                    ${['Agama Islam','Fiqih','Tafsir','Hadits','Akhlak','Sejarah Islam','Pendidikan','Bahasa Arab','Umum','Referensi'].map(c =>
-                        `<option ${book.kategori === c ? 'selected' : ''}>${c}</option>`
-                    ).join('')}
-                </select>
-            </div>
+            <div class="form-group"><label>Kategori</label><select id="editKategori">${getCategoryOptions(book.kategori)}</select></div>
             <div class="form-group"><label>Rak</label><input type="text" id="editRak" value="${book.rak || ''}"></div>
         </div>
         <div class="form-group"><label>URL Cover</label><input type="text" id="editCover" value="${book.cover_url || ''}"></div>
@@ -1583,33 +1242,22 @@ async function doUpdateBook(id) {
         cover_url: document.getElementById('editCover').value.trim(),
         deskripsi: document.getElementById('editDeskripsi').value.trim()
     });
-
-    if (result.status === 'success') {
-        showNotification('Buku berhasil diupdate!', 'success');
-        closeDynamicModal('editBookModal');
-        loadBooksPage();
-    } else {
-        showNotification(result.message, 'error');
-    }
+    if (result.status === 'success') { showNotification('Buku berhasil diupdate!', 'success'); closeDynamicModal('editBookModal'); loadBooksPage(); }
+    else { showNotification(result.message, 'error'); }
 }
 
 async function deleteBook(id, title) {
     if (!confirm(`Hapus buku "${title}"?`)) return;
     const result = await apiCall({ action: 'deleteBook', id });
-    if (result.status === 'success') {
-        showNotification('Buku berhasil dihapus', 'success');
-        loadBooksPage();
-    } else {
-        showNotification(result.message, 'error');
-    }
+    if (result.status === 'success') { showNotification('Buku berhasil dihapus', 'success'); loadBooksPage(); }
+    else { showNotification(result.message, 'error'); }
 }
 
-// ==================== MEMBERS PAGE (ADMIN) ====================
+// ==================== MEMBERS PAGE ====================
 async function loadMembersPage() {
     setActiveMenu('members');
     document.getElementById('pageTitle').textContent = 'Data Anggota';
     const content = document.getElementById('contentArea');
-
     content.innerHTML = `
         <div class="data-card">
             <div class="data-card-header">
@@ -1627,45 +1275,27 @@ async function loadMembersPage() {
             </div>
         </div>
     `;
-
     const result = await apiCall({ action: 'getMembers' });
-    if (result.status === 'success') {
-        allMembers = result.data;
-        renderMembersTable(allMembers);
-    }
+    if (result.status === 'success') { allMembers = result.data; renderMembersTable(allMembers); }
 }
 
 function renderMembersTable(members) {
     const tbody = document.getElementById('membersTableBody');
-    if (!members.length) {
-        tbody.innerHTML = '<tr><td colspan="8"><div class="empty-state"><i class="fas fa-users"></i><h3>Belum ada anggota</h3></div></td></tr>';
-        return;
-    }
+    if (!members.length) { tbody.innerHTML = '<tr><td colspan="8"><div class="empty-state"><i class="fas fa-users"></i><h3>Belum ada anggota</h3></div></td></tr>'; return; }
     tbody.innerHTML = members.map(m => `
-        <tr>
-            <td><strong>${m.id}</strong></td>
-            <td>${m.nama}</td>
-            <td>${m.nim || '-'}</td>
-            <td>${m.prodi || '-'}</td>
-            <td>${m.email || '-'}</td>
-            <td><span class="book-category">${m.role}</span></td>
-            <td><span class="status-badge ${m.status === 'active' ? 'status-active' : m.status === 'pending' ? 'status-pending' : 'status-inactive'}">${m.status}</span></td>
-            <td>
-                <div class="action-btns">
-                    <button class="action-btn" title="Edit" onclick="showEditMemberModal('${m.id}')"><i class="fas fa-pen"></i></button>
-                    ${m.role !== 'admin' ? `<button class="action-btn delete" title="Hapus" onclick="deleteMember('${m.id}','${m.nama.replace(/'/g, "\\'")}')"><i class="fas fa-trash"></i></button>` : ''}
-                </div>
-            </td>
-        </tr>
+        <tr><td><strong>${m.id}</strong></td><td>${m.nama}</td><td>${m.nim || '-'}</td><td>${m.prodi || '-'}</td>
+        <td>${m.email || '-'}</td><td><span class="book-category">${m.role}</span></td>
+        <td><span class="status-badge ${m.status === 'active' ? 'status-active' : m.status === 'pending' ? 'status-pending' : 'status-inactive'}">${m.status}</span></td>
+        <td><div class="action-btns">
+            <button class="action-btn" title="Edit" onclick="showEditMemberModal('${m.id}')"><i class="fas fa-pen"></i></button>
+            ${m.role !== 'admin' ? `<button class="action-btn delete" title="Hapus" onclick="deleteMember('${m.id}','${m.nama.replace(/'/g, "\\'")}')"><i class="fas fa-trash"></i></button>` : ''}
+        </div></td></tr>
     `).join('');
 }
 
 function filterMembers() {
     const q = document.getElementById('memberSearchInput').value.toLowerCase();
-    const filtered = allMembers.filter(m =>
-        m.nama.toLowerCase().includes(q) || (m.nim && m.nim.toLowerCase().includes(q)) || (m.prodi && m.prodi.toLowerCase().includes(q))
-    );
-    renderMembersTable(filtered);
+    renderMembersTable(allMembers.filter(m => m.nama.toLowerCase().includes(q) || (m.nim && m.nim.toLowerCase().includes(q)) || (m.prodi && m.prodi.toLowerCase().includes(q))));
 }
 
 function showAddMemberModal() {
@@ -1675,12 +1305,9 @@ function showAddMemberModal() {
         <div class="form-group"><label>Nama Lengkap *</label><input type="text" id="amNama" placeholder="Nama lengkap"></div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
             <div class="form-group"><label>NIM</label><input type="text" id="amNim" placeholder="NIM"></div>
-            <div class="form-group"><label>Program Studi</label>
-                <select id="amProdi"><option value="">Pilih Prodi</option>
-                    <option>Pendidikan Agama Islam</option><option>Komunikasi Penyiaran Islam</option>
-                    <option>Manajemen Dakwah</option><option>Ekonomi Syariah</option><option>Hukum Keluarga Islam</option>
-                </select>
-            </div>
+            <div class="form-group"><label>Program Studi</label><select id="amProdi"><option value="">Pilih Prodi</option>
+                <option>Pendidikan Agama Islam</option><option>Komunikasi Penyiaran Islam</option>
+                <option>Manajemen Dakwah</option><option>Ekonomi Syariah</option><option>Hukum Keluarga Islam</option></select></div>
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
             <div class="form-group"><label>Email</label><input type="email" id="amEmail" placeholder="Email"></div>
@@ -1690,52 +1317,34 @@ function showAddMemberModal() {
             <div class="form-group"><label>Username *</label><input type="text" id="amUsername" placeholder="Username"></div>
             <div class="form-group"><label>Password *</label><input type="password" id="amPassword" placeholder="Password"></div>
         </div>
-        <div class="form-group"><label>Role</label>
-            <select id="amRole"><option value="member">Anggota</option><option value="admin">Admin</option></select>
-        </div>
+        <div class="form-group"><label>Role</label><select id="amRole"><option value="member">Anggota</option><option value="admin">Admin</option></select></div>
         <button class="btn btn-primary btn-full" onclick="doAddMember()"><i class="fas fa-save"></i> Simpan Anggota</button>
     `, 'modal-lg');
 }
 
 async function doAddMember() {
     const result = await apiCall({
-        action: 'addMember',
-        nama: document.getElementById('amNama').value.trim(),
-        nim: document.getElementById('amNim').value.trim(),
-        prodi: document.getElementById('amProdi').value,
-        email: document.getElementById('amEmail').value.trim(),
-        phone: document.getElementById('amPhone').value.trim(),
-        username: document.getElementById('amUsername').value.trim(),
-        password: document.getElementById('amPassword').value.trim(),
+        action: 'addMember', nama: document.getElementById('amNama').value.trim(),
+        nim: document.getElementById('amNim').value.trim(), prodi: document.getElementById('amProdi').value,
+        email: document.getElementById('amEmail').value.trim(), phone: document.getElementById('amPhone').value.trim(),
+        username: document.getElementById('amUsername').value.trim(), password: document.getElementById('amPassword').value.trim(),
         role: document.getElementById('amRole').value
     });
-
-    if (result.status === 'success') {
-        showNotification('Anggota berhasil ditambahkan!', 'success');
-        closeDynamicModal('addMemberModal');
-        loadMembersPage();
-    } else {
-        showNotification(result.message, 'error');
-    }
+    if (result.status === 'success') { showNotification('Anggota berhasil ditambahkan!', 'success'); closeDynamicModal('addMemberModal'); loadMembersPage(); }
+    else { showNotification(result.message, 'error'); }
 }
 
 function showEditMemberModal(memberId) {
     const member = allMembers.find(m => m.id === memberId);
     if (!member) return;
-
     showDynamicModal('editMemberModal', `
         <h2><i class="fas fa-user-edit" style="color:var(--primary)"></i> Edit Anggota</h2>
         <div class="form-group"><label>Nama Lengkap</label><input type="text" id="emNama" value="${member.nama}"></div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
             <div class="form-group"><label>NIM</label><input type="text" id="emNim" value="${member.nim || ''}"></div>
-            <div class="form-group"><label>Program Studi</label>
-                <select id="emProdi">
-                    <option value="">Pilih Prodi</option>
-                    ${['Pendidikan Agama Islam','Komunikasi Penyiaran Islam','Manajemen Dakwah','Ekonomi Syariah','Hukum Keluarga Islam'].map(p =>
-                        `<option ${member.prodi === p ? 'selected' : ''}>${p}</option>`
-                    ).join('')}
-                </select>
-            </div>
+            <div class="form-group"><label>Program Studi</label><select id="emProdi"><option value="">Pilih Prodi</option>
+                ${['Pendidikan Agama Islam','Komunikasi Penyiaran Islam','Manajemen Dakwah','Ekonomi Syariah','Hukum Keluarga Islam'].map(p =>
+                    `<option ${member.prodi === p ? 'selected' : ''}>${p}</option>`).join('')}</select></div>
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
             <div class="form-group"><label>Email</label><input type="email" id="emEmail" value="${member.email || ''}"></div>
@@ -1743,13 +1352,10 @@ function showEditMemberModal(memberId) {
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
             <div class="form-group"><label>Password Baru (kosongkan jika tidak diubah)</label><input type="password" id="emPassword" placeholder="Password baru"></div>
-            <div class="form-group"><label>Status</label>
-                <select id="emStatus">
-                    <option value="active" ${member.status === 'active' ? 'selected' : ''}>Active</option>
-                    <option value="pending" ${member.status === 'pending' ? 'selected' : ''}>Pending</option>
-                    <option value="inactive" ${member.status === 'inactive' ? 'selected' : ''}>Inactive</option>
-                </select>
-            </div>
+            <div class="form-group"><label>Status</label><select id="emStatus">
+                <option value="active" ${member.status === 'active' ? 'selected' : ''}>Active</option>
+                <option value="pending" ${member.status === 'pending' ? 'selected' : ''}>Pending</option>
+                <option value="inactive" ${member.status === 'inactive' ? 'selected' : ''}>Inactive</option></select></div>
         </div>
         <button class="btn btn-primary btn-full" onclick="doUpdateMember('${member.id}')"><i class="fas fa-save"></i> Update Anggota</button>
     `, 'modal-lg');
@@ -1757,34 +1363,20 @@ function showEditMemberModal(memberId) {
 
 async function doUpdateMember(id) {
     const result = await apiCall({
-        action: 'updateMember', id,
-        nama: document.getElementById('emNama').value.trim(),
-        nim: document.getElementById('emNim').value.trim(),
-        prodi: document.getElementById('emProdi').value,
-        email: document.getElementById('emEmail').value.trim(),
-        phone: document.getElementById('emPhone').value.trim(),
-        password: document.getElementById('emPassword').value.trim(),
-        status: document.getElementById('emStatus').value
+        action: 'updateMember', id, nama: document.getElementById('emNama').value.trim(),
+        nim: document.getElementById('emNim').value.trim(), prodi: document.getElementById('emProdi').value,
+        email: document.getElementById('emEmail').value.trim(), phone: document.getElementById('emPhone').value.trim(),
+        password: document.getElementById('emPassword').value.trim(), status: document.getElementById('emStatus').value
     });
-
-    if (result.status === 'success') {
-        showNotification('Data anggota berhasil diupdate!', 'success');
-        closeDynamicModal('editMemberModal');
-        loadMembersPage();
-    } else {
-        showNotification(result.message, 'error');
-    }
+    if (result.status === 'success') { showNotification('Data anggota berhasil diupdate!', 'success'); closeDynamicModal('editMemberModal'); loadMembersPage(); }
+    else { showNotification(result.message, 'error'); }
 }
 
 async function deleteMember(id, name) {
     if (!confirm(`Hapus anggota "${name}"?`)) return;
     const result = await apiCall({ action: 'deleteMember', id });
-    if (result.status === 'success') {
-        showNotification('Anggota berhasil dihapus', 'success');
-        loadMembersPage();
-    } else {
-        showNotification(result.message, 'error');
-    }
+    if (result.status === 'success') { showNotification('Anggota berhasil dihapus', 'success'); loadMembersPage(); }
+    else { showNotification(result.message, 'error'); }
 }
 
 // ==================== BORROWINGS PAGE ====================
@@ -1792,7 +1384,6 @@ async function loadBorrowingsPage() {
     setActiveMenu('borrowings');
     document.getElementById('pageTitle').textContent = 'Data Peminjaman';
     const content = document.getElementById('contentArea');
-
     content.innerHTML = `
         <div class="data-card">
             <div class="data-card-header">
@@ -1800,9 +1391,7 @@ async function loadBorrowingsPage() {
                 <div class="filter-bar">
                     <input type="text" id="borrowSearchInput" placeholder="Cari..." onkeyup="filterBorrowings()">
                     <select id="borrowStatusFilter" onchange="filterBorrowings()">
-                        <option value="">Semua Status</option>
-                        <option value="dipinjam">Dipinjam</option>
-                        <option value="dikembalikan">Dikembalikan</option>
+                        <option value="">Semua Status</option><option value="dipinjam">Dipinjam</option><option value="dikembalikan">Dikembalikan</option>
                     </select>
                 </div>
             </div>
@@ -1814,32 +1403,21 @@ async function loadBorrowingsPage() {
             </div>
         </div>
     `;
-
     const result = await apiCall({ action: 'getBorrowings' });
-    if (result.status === 'success') {
-        allBorrowings = result.data;
-        renderBorrowingsTable(allBorrowings);
-    }
+    if (result.status === 'success') { allBorrowings = result.data; renderBorrowingsTable(allBorrowings); }
 }
 
 function renderBorrowingsTable(borrowings) {
     const tbody = document.getElementById('borrowingsTableBody');
-    if (!borrowings.length) {
-        tbody.innerHTML = '<tr><td colspan="9"><div class="empty-state"><i class="fas fa-exchange-alt"></i><h3>Belum ada peminjaman</h3></div></td></tr>';
-        return;
-    }
-    tbody.innerHTML = borrowings.reverse().map(b => `
-        <tr>
-            <td><strong>${b.id}</strong></td>
-            <td>${b.judul_buku}</td>
-            <td>${b.nama_peminjam}</td>
-            <td>${formatDate(b.tanggal_pinjam)}</td>
-            <td>${formatDate(b.tanggal_kembali)}</td>
-            <td>${b.tanggal_dikembalikan ? formatDate(b.tanggal_dikembalikan) : '-'}</td>
-            <td><span class="status-badge ${getStatusClass(b.status, b.tanggal_kembali)}">${getStatusText(b.status, b.tanggal_kembali)}</span></td>
-            <td>${b.denda ? 'Rp ' + parseInt(b.denda).toLocaleString('id') : '-'}</td>
-            <td>${b.status === 'dipinjam' ? `<button class="btn btn-success btn-sm" onclick="doReturnBook('${b.id}')"><i class="fas fa-undo"></i></button>` : ''}</td>
-        </tr>
+    if (!borrowings.length) { tbody.innerHTML = '<tr><td colspan="9"><div class="empty-state"><i class="fas fa-exchange-alt"></i><h3>Belum ada peminjaman</h3></div></td></tr>'; return; }
+    const sorted = [...borrowings].reverse();
+    tbody.innerHTML = sorted.map(b => `
+        <tr><td><strong>${b.id}</strong></td><td>${b.judul_buku}</td><td>${b.nama_peminjam}</td>
+        <td>${formatDate(b.tanggal_pinjam)}</td><td>${formatDate(b.tanggal_kembali)}</td>
+        <td>${b.tanggal_dikembalikan ? formatDate(b.tanggal_dikembalikan) : '-'}</td>
+        <td><span class="status-badge ${getStatusClass(b.status, b.tanggal_kembali)}">${getStatusText(b.status, b.tanggal_kembali)}</span></td>
+        <td>${b.denda ? 'Rp ' + parseInt(b.denda).toLocaleString('id') : '-'}</td>
+        <td>${b.status === 'dipinjam' ? `<button class="btn btn-success btn-sm" onclick="doReturnBook('${b.id}')"><i class="fas fa-undo"></i></button>` : ''}</td></tr>
     `).join('');
 }
 
@@ -1857,37 +1435,20 @@ async function showBorrowForm() {
     setActiveMenu('borrow');
     document.getElementById('pageTitle').textContent = 'Pinjam Buku';
     const content = document.getElementById('contentArea');
-
-    // Load fresh data
-    const [booksRes, membersRes] = await Promise.all([
-        apiCall({ action: 'getBooks' }),
-        apiCall({ action: 'getMembers' })
-    ]);
-
-    allBooks = booksRes.data || [];
-    allMembers = membersRes.data || [];
-
+    const [booksRes, membersRes] = await Promise.all([apiCall({ action: 'getBooks' }), apiCall({ action: 'getMembers' })]);
+    allBooks = booksRes.data || []; allMembers = membersRes.data || [];
     const availableBooks = allBooks.filter(b => b.tersedia > 0);
     const activeMembers = allMembers.filter(m => m.role === 'member' && m.status === 'active');
-
     content.innerHTML = `
         <div class="data-card">
             <div class="data-card-header"><h3><i class="fas fa-hand-holding"></i> Form Peminjaman Buku</h3></div>
             <div style="padding:32px;max-width:600px;">
-                <div class="form-group">
-                    <label>Pilih Anggota *</label>
-                    <select id="borrowMember">
-                        <option value="">-- Pilih Anggota --</option>
-                        ${activeMembers.map(m => `<option value="${m.id}" data-nama="${m.nama}">${m.nama} (${m.nim || m.id})</option>`).join('')}
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Pilih Buku *</label>
-                    <select id="borrowBook">
-                        <option value="">-- Pilih Buku --</option>
-                        ${availableBooks.map(b => `<option value="${b.id}">${b.judul} (Tersedia: ${b.tersedia})</option>`).join('')}
-                    </select>
-                </div>
+                <div class="form-group"><label>Pilih Anggota *</label>
+                    <select id="borrowMember"><option value="">-- Pilih Anggota --</option>
+                    ${activeMembers.map(m => `<option value="${m.id}" data-nama="${m.nama}">${m.nama} (${m.nim || m.id})</option>`).join('')}</select></div>
+                <div class="form-group"><label>Pilih Buku *</label>
+                    <select id="borrowBook"><option value="">-- Pilih Buku --</option>
+                    ${availableBooks.map(b => `<option value="${b.id}">${b.judul} (Tersedia: ${b.tersedia})</option>`).join('')}</select></div>
                 <button class="btn btn-primary btn-full" onclick="doBorrowBook()"><i class="fas fa-check"></i> Proses Peminjaman</button>
             </div>
         </div>
@@ -1899,46 +1460,31 @@ async function doBorrowBook() {
     const bookId = document.getElementById('borrowBook').value;
     const memberId = memberSelect.value;
     const nama = memberSelect.options[memberSelect.selectedIndex]?.dataset?.nama || '';
-
     if (!memberId || !bookId) { showNotification('Pilih anggota dan buku', 'warning'); return; }
-
     const result = await apiCall({ action: 'borrowBook', member_id: memberId, book_id: bookId, nama_peminjam: nama });
-    if (result.status === 'success') {
-        showNotification(`Buku berhasil dipinjam! Batas kembali: ${formatDate(result.data.tanggal_kembali)}`, 'success');
-        showBorrowForm();
-    } else {
-        showNotification(result.message, 'error');
-    }
+    if (result.status === 'success') { showNotification(`Buku berhasil dipinjam! Batas kembali: ${formatDate(result.data.tanggal_kembali)}`, 'success'); showBorrowForm(); }
+    else { showNotification(result.message, 'error'); }
 }
 
 async function showReturnForm() {
     setActiveMenu('return');
     document.getElementById('pageTitle').textContent = 'Pengembalian Buku';
     const content = document.getElementById('contentArea');
-
     const result = await apiCall({ action: 'getBorrowings' });
     allBorrowings = result.data || [];
     const active = allBorrowings.filter(b => b.status === 'dipinjam');
-
     content.innerHTML = `
         <div class="data-card">
             <div class="data-card-header"><h3><i class="fas fa-undo"></i> Pengembalian Buku</h3></div>
             <div class="data-card-body">
                 <table class="data-table">
                     <thead><tr><th>ID Pinjam</th><th>Buku</th><th>Peminjam</th><th>Tgl Pinjam</th><th>Batas</th><th>Status</th><th>Aksi</th></tr></thead>
-                    <tbody>
-                        ${active.length ? active.map(b => `
-                            <tr>
-                                <td><strong>${b.id}</strong></td>
-                                <td>${b.judul_buku}</td>
-                                <td>${b.nama_peminjam}</td>
-                                <td>${formatDate(b.tanggal_pinjam)}</td>
-                                <td>${formatDate(b.tanggal_kembali)}</td>
-                                <td><span class="status-badge ${getStatusClass(b.status, b.tanggal_kembali)}">${getStatusText(b.status, b.tanggal_kembali)}</span></td>
-                                <td><button class="btn btn-success btn-sm" onclick="doReturnBook('${b.id}')"><i class="fas fa-check"></i> Kembalikan</button></td>
-                            </tr>
-                        `).join('') : '<tr><td colspan="7"><div class="empty-state"><i class="fas fa-check-circle"></i><h3>Tidak ada peminjaman aktif</h3></div></td></tr>'}
-                    </tbody>
+                    <tbody>${active.length ? active.map(b => `
+                        <tr><td><strong>${b.id}</strong></td><td>${b.judul_buku}</td><td>${b.nama_peminjam}</td>
+                        <td>${formatDate(b.tanggal_pinjam)}</td><td>${formatDate(b.tanggal_kembali)}</td>
+                        <td><span class="status-badge ${getStatusClass(b.status, b.tanggal_kembali)}">${getStatusText(b.status, b.tanggal_kembali)}</span></td>
+                        <td><button class="btn btn-success btn-sm" onclick="doReturnBook('${b.id}')"><i class="fas fa-check"></i> Kembalikan</button></td></tr>
+                    `).join('') : '<tr><td colspan="7"><div class="empty-state"><i class="fas fa-check-circle"></i><h3>Tidak ada peminjaman aktif</h3></div></td></tr>'}</tbody>
                 </table>
             </div>
         </div>
@@ -1947,21 +1493,256 @@ async function showReturnForm() {
 
 async function doReturnBook(borrowId) {
     if (!confirm('Konfirmasi pengembalian buku?')) return;
-
     const result = await apiCall({ action: 'returnBook', borrow_id: borrowId });
     if (result.status === 'success') {
         let msg = 'Buku berhasil dikembalikan!';
         if (result.denda > 0) msg += ` Denda keterlambatan: Rp ${parseInt(result.denda).toLocaleString('id')}`;
         showNotification(msg, result.denda > 0 ? 'warning' : 'success');
-
-        // Refresh current page
         const activePage = document.querySelector('.menu-item.active')?.dataset?.page;
         if (activePage === 'return') showReturnForm();
         else if (activePage === 'borrowings') loadBorrowingsPage();
         else loadDashboard();
-    } else {
-        showNotification(result.message, 'error');
-    }
+    } else { showNotification(result.message, 'error'); }
+}
+
+// ==================== CATEGORIES PAGE ====================
+async function loadCategoriesPage() {
+    setActiveMenu('categories');
+    document.getElementById('pageTitle').textContent = 'Manajemen Kategori';
+    const content = document.getElementById('contentArea');
+    content.innerHTML = `
+        <div class="data-card" style="margin-bottom:24px;">
+            <div class="data-card-header">
+                <h3><i class="fas fa-tags"></i> Kelola Kategori Buku</h3>
+                <div class="filter-bar">
+                    <input type="text" id="catSearchInput" placeholder="Cari kategori..." onkeyup="filterCategories()">
+                    <button class="btn btn-primary btn-sm" onclick="showAddCategoryModal()"><i class="fas fa-plus"></i> Tambah Kategori</button>
+                </div>
+            </div>
+            <div style="padding:20px 24px;">
+                <div id="catStatBar" class="cat-stat-bar"><i class="fas fa-spinner fa-spin" style="color:var(--primary)"></i> Memuat statistik...</div>
+                <div class="category-grid" id="categoryGrid">
+                    ${[1,2,3,4].map(() => `<div class="category-card" style="opacity:0.4;pointer-events:none;">
+                        <div class="category-icon" style="background:#e2e8f0;"></div>
+                        <div class="category-info"><div style="height:16px;background:#e2e8f0;border-radius:4px;margin-bottom:8px;width:60%;"></div>
+                        <div style="height:12px;background:#f1f5f9;border-radius:4px;width:90%;"></div></div></div>`).join('')}
+                </div>
+            </div>
+        </div>
+        <div class="data-card">
+            <div class="data-card-header"><h3><i class="fas fa-table"></i> Tabel Kategori</h3></div>
+            <div class="data-card-body">
+                <table class="data-table">
+                    <thead><tr><th>ID</th><th>Kategori</th><th>Deskripsi</th><th>Jumlah Buku</th><th>Tanggal Input</th><th>Aksi</th></tr></thead>
+                    <tbody id="categoriesTableBody"><tr><td colspan="6" style="text-align:center;padding:40px;">Memuat data...</td></tr></tbody>
+                </table>
+            </div>
+        </div>
+    `;
+    await fetchAndRenderCategories();
+}
+
+async function fetchAndRenderCategories() {
+    const result = await apiCall({ action: 'getCategories' });
+    if (result.status === 'success') {
+        allCategories = result.data;
+        renderCategoryGrid(allCategories);
+        renderCategoriesTable(allCategories);
+        renderCatStatBar(allCategories);
+    } else { showNotification(result.message, 'error'); }
+}
+
+function renderCatStatBar(categories) {
+    const bar = document.getElementById('catStatBar');
+    if (!bar) return;
+    const total = categories.length;
+    const totalBuku = categories.reduce((s, c) => s + (c.jumlah_buku || 0), 0);
+    const withBooks = categories.filter(c => c.jumlah_buku > 0).length;
+    bar.innerHTML = `
+        <div class="cat-stat-item"><i class="fas fa-tags" style="color:var(--primary)"></i><strong>${total}</strong> Total Kategori</div>
+        <div class="cat-stat-item"><i class="fas fa-book" style="color:var(--accent2)"></i><strong>${totalBuku}</strong> Total Buku Terkategori</div>
+        <div class="cat-stat-item"><i class="fas fa-check-circle" style="color:var(--success)"></i><strong>${withBooks}</strong> Kategori Terisi</div>
+        <div class="cat-stat-item"><i class="fas fa-circle-minus" style="color:var(--text-muted)"></i><strong>${total - withBooks}</strong> Kategori Kosong</div>
+    `;
+}
+
+function renderCategoryGrid(categories) {
+    const grid = document.getElementById('categoryGrid');
+    if (!grid) return;
+    if (!categories.length) { grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1;"><i class="fas fa-tags"></i><h3>Belum ada kategori</h3><p>Tambahkan kategori pertama Anda</p></div>`; return; }
+    grid.innerHTML = categories.map(cat => `
+        <div class="category-card" style="--cat-color:${cat.warna}">
+            <div class="category-icon" style="background:${cat.warna}"><i class="fas ${cat.icon || 'fa-book'}"></i></div>
+            <div class="category-info">
+                <h4>${cat.nama}</h4>
+                <p>${cat.deskripsi || '<em style="color:var(--text-muted)">Tidak ada deskripsi</em>'}</p>
+                <div class="category-meta"><span class="category-book-count"><i class="fas fa-book"></i> ${cat.jumlah_buku} buku</span></div>
+            </div>
+            <div class="category-actions">
+                <button class="action-btn" title="Edit" onclick="showEditCategoryModal('${cat.id}')"><i class="fas fa-pen"></i></button>
+                <button class="action-btn delete" title="Hapus" onclick="doDeleteCategory('${cat.id}','${cat.nama.replace(/'/g,"\\'")}',${cat.jumlah_buku})"><i class="fas fa-trash"></i></button>
+            </div>
+        </div>
+    `).join('');
+}
+
+function renderCategoriesTable(categories) {
+    const tbody = document.getElementById('categoriesTableBody');
+    if (!tbody) return;
+    if (!categories.length) { tbody.innerHTML = '<tr><td colspan="6"><div class="empty-state"><i class="fas fa-tags"></i><h3>Belum ada kategori</h3></div></td></tr>'; return; }
+    tbody.innerHTML = categories.map(cat => `
+        <tr>
+            <td><strong>${cat.id}</strong></td>
+            <td><div style="display:flex;align-items:center;gap:10px;">
+                <div style="width:32px;height:32px;border-radius:8px;background:${cat.warna};display:flex;align-items:center;justify-content:center;color:white;font-size:0.85rem;flex-shrink:0;">
+                    <i class="fas ${cat.icon || 'fa-book'}"></i></div><strong>${cat.nama}</strong></div></td>
+            <td style="max-width:250px;color:var(--text-light);">${cat.deskripsi || '-'}</td>
+            <td><span class="status-badge ${cat.jumlah_buku > 0 ? 'status-active' : 'status-inactive'}">${cat.jumlah_buku} buku</span></td>
+            <td>${formatDate(cat.tanggal_input)}</td>
+            <td><div class="action-btns">
+                <button class="action-btn" title="Edit" onclick="showEditCategoryModal('${cat.id}')"><i class="fas fa-pen"></i></button>
+                <button class="action-btn" title="Lihat Buku" onclick="viewCategoryBooks('${cat.nama.replace(/'/g,"\\'")}')"><i class="fas fa-eye"></i></button>
+                <button class="action-btn delete" title="Hapus" onclick="doDeleteCategory('${cat.id}','${cat.nama.replace(/'/g,"\\'")}',${cat.jumlah_buku})"><i class="fas fa-trash"></i></button>
+            </div></td>
+        </tr>
+    `).join('');
+}
+
+function filterCategories() {
+    const q = document.getElementById('catSearchInput').value.toLowerCase();
+    const filtered = !q ? allCategories : allCategories.filter(c => c.nama.toLowerCase().includes(q) || (c.deskripsi && c.deskripsi.toLowerCase().includes(q)));
+    renderCategoryGrid(filtered); renderCategoriesTable(filtered); renderCatStatBar(filtered);
+}
+
+function showAddCategoryModal() {
+    showDynamicModal('addCatModal', `
+        <h2><i class="fas fa-plus-circle" style="color:var(--primary)"></i> Tambah Kategori</h2>
+        <p class="subtitle">Buat kategori baru untuk koleksi buku</p>
+        <div class="form-group"><label>Nama Kategori *</label><input type="text" id="acNama" placeholder="Contoh: Tafsir Al-Quran" oninput="updateCatPreview('ac')"></div>
+        <div class="form-group"><label>Deskripsi</label><textarea id="acDesc" rows="2" placeholder="Deskripsi singkat kategori ini..." oninput="updateCatPreview('ac')"></textarea></div>
+        <div class="form-group"><label>Pilih Warna</label>
+            <div class="color-grid" id="acColorGrid">${CATEGORY_COLORS.map(c => `<div class="color-swatch ${c === '#0ea5e9' ? 'selected' : ''}" style="background:${c}" data-color="${c}" onclick="selectColor('${c}','ac')" title="${c}"></div>`).join('')}</div>
+            <input type="color" id="acColorCustom" value="#0ea5e9" onchange="selectCustomColor(this.value,'ac')" style="margin-top:8px;width:100%;height:36px;border-radius:8px;border:1px solid var(--border);padding:2px;cursor:pointer;">
+        </div>
+        <div class="form-group"><label>Pilih Icon</label>
+            <div class="icon-grid" id="acIconGrid">${CATEGORY_ICONS.map((ico, idx) => `<div class="icon-item ${idx === 0 ? 'selected' : ''}" data-icon="${ico}" onclick="selectIcon('${ico}','ac')" title="${ico}"><i class="fas ${ico}"></i></div>`).join('')}</div>
+        </div>
+        <div class="form-group"><label>Preview</label>
+            <div style="display:flex;align-items:center;gap:12px;padding:16px;background:var(--bg);border-radius:var(--radius);border:1px solid var(--border);">
+                <div id="acPreviewIcon" style="width:48px;height:48px;border-radius:12px;background:#0ea5e9;display:flex;align-items:center;justify-content:center;color:white;font-size:1.2rem;flex-shrink:0;"><i class="fas fa-book"></i></div>
+                <div><div id="acPreviewName" style="font-weight:700;color:var(--secondary);">Nama Kategori</div>
+                <div id="acPreviewDesc" style="font-size:0.78rem;color:var(--text-light);">Deskripsi kategori</div></div>
+            </div>
+        </div>
+        <input type="hidden" id="acColor" value="#0ea5e9"><input type="hidden" id="acIcon" value="fa-book">
+        <button class="btn btn-primary btn-full" onclick="doAddCategory()"><i class="fas fa-save"></i> Simpan Kategori</button>
+    `, 'modal-lg');
+}
+
+function showEditCategoryModal(catId) {
+    const cat = allCategories.find(c => c.id === catId);
+    if (!cat) return;
+    showDynamicModal('editCatModal', `
+        <h2><i class="fas fa-pen" style="color:var(--primary)"></i> Edit Kategori</h2>
+        <p class="subtitle">Perbarui informasi kategori</p>
+        <div class="form-group"><label>Nama Kategori *</label><input type="text" id="ecNama" value="${cat.nama}" oninput="updateCatPreview('ec')"></div>
+        <div class="form-group"><label>Deskripsi</label><textarea id="ecDesc" rows="2" oninput="updateCatPreview('ec')">${cat.deskripsi || ''}</textarea></div>
+        <div class="form-group"><label>Pilih Warna</label>
+            <div class="color-grid" id="ecColorGrid">${CATEGORY_COLORS.map(c => `<div class="color-swatch ${c === cat.warna ? 'selected' : ''}" style="background:${c}" data-color="${c}" onclick="selectColor('${c}','ec')" title="${c}"></div>`).join('')}</div>
+            <input type="color" id="ecColorCustom" value="${cat.warna}" onchange="selectCustomColor(this.value,'ec')" style="margin-top:8px;width:100%;height:36px;border-radius:8px;border:1px solid var(--border);padding:2px;cursor:pointer;">
+        </div>
+        <div class="form-group"><label>Pilih Icon</label>
+            <div class="icon-grid" id="ecIconGrid">${CATEGORY_ICONS.map(ico => `<div class="icon-item ${ico === (cat.icon || 'fa-book') ? 'selected' : ''}" data-icon="${ico}" onclick="selectIcon('${ico}','ec')" title="${ico}"><i class="fas ${ico}"></i></div>`).join('')}</div>
+        </div>
+        <div class="form-group"><label>Preview</label>
+            <div style="display:flex;align-items:center;gap:12px;padding:16px;background:var(--bg);border-radius:var(--radius);border:1px solid var(--border);">
+                <div id="ecPreviewIcon" style="width:48px;height:48px;border-radius:12px;background:${cat.warna};display:flex;align-items:center;justify-content:center;color:white;font-size:1.2rem;flex-shrink:0;"><i class="fas ${cat.icon || 'fa-book'}"></i></div>
+                <div><div id="ecPreviewName" style="font-weight:700;color:var(--secondary);">${cat.nama}</div>
+                <div id="ecPreviewDesc" style="font-size:0.78rem;color:var(--text-light);">${cat.deskripsi || 'Deskripsi kategori'}</div></div>
+            </div>
+        </div>
+        ${cat.jumlah_buku > 0 ? `<div style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.3);border-radius:var(--radius);padding:12px 16px;margin-bottom:16px;font-size:0.85rem;color:var(--warning);display:flex;align-items:center;gap:8px;">
+            <i class="fas fa-triangle-exclamation"></i><span>Kategori ini memiliki <strong>${cat.jumlah_buku} buku</strong>. Jika nama diubah, semua buku akan diperbarui otomatis.</span></div>` : ''}
+        <input type="hidden" id="ecColor" value="${cat.warna}"><input type="hidden" id="ecIcon" value="${cat.icon || 'fa-book'}">
+        <button class="btn btn-primary btn-full" onclick="doUpdateCategory('${cat.id}')"><i class="fas fa-save"></i> Update Kategori</button>
+    `, 'modal-lg');
+}
+
+function selectColor(color, prefix) {
+    document.getElementById(prefix + 'Color').value = color;
+    document.querySelectorAll(`#${prefix}ColorGrid .color-swatch`).forEach(el => el.classList.toggle('selected', el.dataset.color === color));
+    updateCatPreview(prefix);
+}
+function selectCustomColor(color, prefix) {
+    document.getElementById(prefix + 'Color').value = color;
+    document.querySelectorAll(`#${prefix}ColorGrid .color-swatch`).forEach(el => el.classList.remove('selected'));
+    updateCatPreview(prefix);
+}
+function selectIcon(icon, prefix) {
+    document.getElementById(prefix + 'Icon').value = icon;
+    document.querySelectorAll(`#${prefix}IconGrid .icon-item`).forEach(el => el.classList.toggle('selected', el.dataset.icon === icon));
+    updateCatPreview(prefix);
+}
+function updateCatPreview(prefix) {
+    const nama = document.getElementById(prefix + 'Nama')?.value || 'Nama Kategori';
+    const desc = document.getElementById(prefix + 'Desc')?.value || 'Deskripsi kategori';
+    const color = document.getElementById(prefix + 'Color')?.value || '#0ea5e9';
+    const icon = document.getElementById(prefix + 'Icon')?.value || 'fa-book';
+    const previewIcon = document.getElementById(prefix + 'PreviewIcon');
+    const previewName = document.getElementById(prefix + 'PreviewName');
+    const previewDesc = document.getElementById(prefix + 'PreviewDesc');
+    if (previewIcon) { previewIcon.style.background = color; previewIcon.innerHTML = `<i class="fas ${icon}"></i>`; }
+    if (previewName) previewName.textContent = nama || 'Nama Kategori';
+    if (previewDesc) previewDesc.textContent = desc || 'Deskripsi kategori';
+}
+
+async function doAddCategory() {
+    const nama = document.getElementById('acNama').value.trim();
+    const deskripsi = document.getElementById('acDesc').value.trim();
+    const warna = document.getElementById('acColor').value;
+    const icon = document.getElementById('acIcon').value;
+    if (!nama) { showNotification('Nama kategori wajib diisi', 'warning'); return; }
+    const result = await apiCall({ action: 'addCategory', nama, deskripsi, warna, icon });
+    if (result.status === 'success') { showNotification('Kategori berhasil ditambahkan!', 'success'); closeDynamicModal('addCatModal'); await fetchAndRenderCategories(); }
+    else { showNotification(result.message, 'error'); }
+}
+
+async function doUpdateCategory(id) {
+    const nama = document.getElementById('ecNama').value.trim();
+    const deskripsi = document.getElementById('ecDesc').value.trim();
+    const warna = document.getElementById('ecColor').value;
+    const icon = document.getElementById('ecIcon').value;
+    if (!nama) { showNotification('Nama kategori wajib diisi', 'warning'); return; }
+    const result = await apiCall({ action: 'updateCategory', id, nama, deskripsi, warna, icon });
+    if (result.status === 'success') { showNotification('Kategori berhasil diupdate!', 'success'); closeDynamicModal('editCatModal'); await fetchAndRenderCategories(); }
+    else { showNotification(result.message, 'error'); }
+}
+
+async function doDeleteCategory(id, nama, jumlahBuku) {
+    if (jumlahBuku > 0) { showNotification(`Kategori "${nama}" memiliki ${jumlahBuku} buku, tidak bisa dihapus!`, 'warning'); return; }
+    if (!confirm(`Hapus kategori "${nama}"?`)) return;
+    const result = await apiCall({ action: 'deleteCategory', id });
+    if (result.status === 'success') { showNotification('Kategori berhasil dihapus', 'success'); await fetchAndRenderCategories(); }
+    else { showNotification(result.message, 'error'); }
+}
+
+async function viewCategoryBooks(kategoriNama) {
+    const result = await apiCall({ action: 'getBooks' });
+    if (result.status !== 'success') return;
+    const books = result.data.filter(b => b.kategori === kategoriNama);
+    const cat = allCategories.find(c => c.nama === kategoriNama);
+    const color = cat?.warna || '#0ea5e9';
+    showDynamicModal('catBooksModal', `
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+            <div style="width:48px;height:48px;border-radius:12px;background:${color};display:flex;align-items:center;justify-content:center;color:white;font-size:1.2rem;flex-shrink:0;">
+                <i class="fas ${cat?.icon || 'fa-book'}"></i></div>
+            <div><h2 style="margin:0;">${kategoriNama}</h2><p style="margin:0;color:var(--text-light);font-size:0.85rem;">${books.length} buku dalam kategori ini</p></div>
+        </div>
+        ${books.length ? `<table class="data-table"><thead><tr><th>Judul</th><th>Pengarang</th><th>Tahun</th><th>Tersedia</th></tr></thead>
+        <tbody>${books.map(b => `<tr><td><strong>${b.judul}</strong></td><td>${b.pengarang}</td><td>${b.tahun}</td>
+        <td><span class="status-badge ${b.tersedia > 0 ? 'status-active' : 'status-overdue'}">${b.tersedia}/${b.jumlah}</span></td></tr>`).join('')}</tbody></table>`
+        : '<div class="empty-state"><i class="fas fa-book-open"></i><h3>Belum ada buku</h3><p>Belum ada buku dalam kategori ini</p></div>'}
+    `, 'modal-xl');
 }
 
 // ==================== MEMBER PAGES ====================
@@ -1969,7 +1750,6 @@ async function loadMemberCatalog() {
     setActiveMenu('catalog');
     document.getElementById('pageTitle').textContent = 'Katalog Buku';
     const content = document.getElementById('contentArea');
-
     content.innerHTML = `
         <div class="search-box" style="max-width:100%;margin-bottom:24px;">
             <i class="fas fa-search search-icon"></i>
@@ -1977,20 +1757,13 @@ async function loadMemberCatalog() {
         </div>
         <div class="books-grid" id="memberBooksGrid"><div class="empty-state"><i class="fas fa-spinner fa-spin"></i><h3>Memuat...</h3></div></div>
     `;
-
     const result = await apiCall({ action: 'getBooks' });
-    if (result.status === 'success') {
-        allBooks = result.data;
-        renderMemberCatalog(allBooks);
-    }
+    if (result.status === 'success') { allBooks = result.data; renderMemberCatalog(allBooks); }
 }
 
 function renderMemberCatalog(books) {
     const grid = document.getElementById('memberBooksGrid');
-    if (!books.length) {
-        grid.innerHTML = '<div class="empty-state" style="grid-column:1/-1;"><i class="fas fa-book-open"></i><h3>Tidak ada buku ditemukan</h3></div>';
-        return;
-    }
+    if (!books.length) { grid.innerHTML = '<div class="empty-state" style="grid-column:1/-1;"><i class="fas fa-book-open"></i><h3>Tidak ada buku ditemukan</h3></div>'; return; }
     grid.innerHTML = books.map(book => `
         <div class="book-card" onclick="showBookDetail('${book.id}')">
             <div class="book-cover">
@@ -2001,10 +1774,7 @@ function renderMemberCatalog(books) {
                 <span class="book-category">${book.kategori || 'Umum'}</span>
                 <h3 class="book-title">${book.judul}</h3>
                 <p class="book-author"><i class="fas fa-user-pen"></i> ${book.pengarang}</p>
-                <div class="book-meta">
-                    <span><i class="fas fa-calendar"></i> ${book.tahun}</span>
-                    <span><i class="fas fa-layer-group"></i> ${book.tersedia}/${book.jumlah}</span>
-                </div>
+                <div class="book-meta"><span><i class="fas fa-calendar"></i> ${book.tahun}</span><span><i class="fas fa-layer-group"></i> ${book.tersedia}/${book.jumlah}</span></div>
             </div>
         </div>
     `).join('');
@@ -2012,17 +1782,13 @@ function renderMemberCatalog(books) {
 
 function filterMemberCatalog() {
     const q = document.getElementById('memberCatalogSearch').value.toLowerCase();
-    const filtered = allBooks.filter(b =>
-        b.judul.toLowerCase().includes(q) || b.pengarang.toLowerCase().includes(q) || (b.kategori && b.kategori.toLowerCase().includes(q))
-    );
-    renderMemberCatalog(filtered);
+    renderMemberCatalog(allBooks.filter(b => b.judul.toLowerCase().includes(q) || b.pengarang.toLowerCase().includes(q) || (b.kategori && b.kategori.toLowerCase().includes(q))));
 }
 
 async function loadMyBorrowings() {
     setActiveMenu('myborrowings');
     document.getElementById('pageTitle').textContent = 'Peminjaman Saya';
     const content = document.getElementById('contentArea');
-
     content.innerHTML = `
         <div class="data-card">
             <div class="data-card-header"><h3><i class="fas fa-book-reader"></i> Riwayat Peminjaman</h3></div>
@@ -2034,25 +1800,16 @@ async function loadMyBorrowings() {
             </div>
         </div>
     `;
-
     const result = await apiCall({ action: 'getMemberBorrowings', member_id: currentUser.id });
     if (result.status === 'success') {
         const tbody = document.getElementById('myBorrowingsBody');
-        if (!result.data.length) {
-            tbody.innerHTML = '<tr><td colspan="7"><div class="empty-state"><i class="fas fa-book-open"></i><h3>Belum ada peminjaman</h3></div></td></tr>';
-        } else {
-            tbody.innerHTML = result.data.reverse().map(b => `
-                <tr>
-                    <td><strong>${b.id}</strong></td>
-                    <td>${b.judul_buku}</td>
-                    <td>${formatDate(b.tanggal_pinjam)}</td>
-                    <td>${formatDate(b.tanggal_kembali)}</td>
-                    <td>${b.tanggal_dikembalikan ? formatDate(b.tanggal_dikembalikan) : '-'}</td>
-                    <td><span class="status-badge ${getStatusClass(b.status, b.tanggal_kembali)}">${getStatusText(b.status, b.tanggal_kembali)}</span></td>
-                    <td>${b.denda ? 'Rp ' + parseInt(b.denda).toLocaleString('id') : '-'}</td>
-                </tr>
-            `).join('');
-        }
+        if (!result.data.length) { tbody.innerHTML = '<tr><td colspan="7"><div class="empty-state"><i class="fas fa-book-open"></i><h3>Belum ada peminjaman</h3></div></td></tr>'; }
+        else { tbody.innerHTML = result.data.reverse().map(b => `
+            <tr><td><strong>${b.id}</strong></td><td>${b.judul_buku}</td><td>${formatDate(b.tanggal_pinjam)}</td>
+            <td>${formatDate(b.tanggal_kembali)}</td><td>${b.tanggal_dikembalikan ? formatDate(b.tanggal_dikembalikan) : '-'}</td>
+            <td><span class="status-badge ${getStatusClass(b.status, b.tanggal_kembali)}">${getStatusText(b.status, b.tanggal_kembali)}</span></td>
+            <td>${b.denda ? 'Rp ' + parseInt(b.denda).toLocaleString('id') : '-'}</td></tr>
+        `).join(''); }
     }
 }
 
@@ -2060,41 +1817,17 @@ function loadMyProfile() {
     setActiveMenu('profile');
     document.getElementById('pageTitle').textContent = 'Profil Saya';
     const content = document.getElementById('contentArea');
-
     content.innerHTML = `
         <div class="data-card">
             <div style="padding:40px;max-width:600px;">
                 <div style="text-align:center;margin-bottom:32px;">
-                    <div style="width:80px;height:80px;border-radius:20px;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;margin:0 auto 16px;color:white;font-size:2rem;font-weight:700;">
-                        ${currentUser.nama.charAt(0)}
-                    </div>
+                    <div style="width:80px;height:80px;border-radius:20px;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;margin:0 auto 16px;color:white;font-size:2rem;font-weight:700;">${currentUser.nama.charAt(0)}</div>
                     <h2 style="font-size:1.3rem;">${currentUser.nama}</h2>
                     <p style="color:var(--text-light);">${currentUser.role === 'admin' ? 'Administrator' : 'Anggota'}</p>
                 </div>
-                <div class="detail-row" style="display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border);">
-                    <span style="color:var(--text-light);font-weight:500;">ID</span>
-                    <span style="font-weight:600;">${currentUser.id}</span>
-                </div>
-                <div class="detail-row" style="display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border);">
-                    <span style="color:var(--text-light);font-weight:500;">Username</span>
-                    <span style="font-weight:600;">${currentUser.username}</span>
-                </div>
-                <div class="detail-row" style="display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border);">
-                    <span style="color:var(--text-light);font-weight:500;">NIM</span>
-                    <span style="font-weight:600;">${currentUser.nim || '-'}</span>
-                </div>
-                <div class="detail-row" style="display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border);">
-                    <span style="color:var(--text-light);font-weight:500;">Program Studi</span>
-                    <span style="font-weight:600;">${currentUser.prodi || '-'}</span>
-                </div>
-                <div class="detail-row" style="display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border);">
-                    <span style="color:var(--text-light);font-weight:500;">Email</span>
-                    <span style="font-weight:600;">${currentUser.email || '-'}</span>
-                </div>
-                <div class="detail-row" style="display:flex;justify-content:space-between;padding:12px 0;">
-                    <span style="color:var(--text-light);font-weight:500;">No. HP</span>
-                    <span style="font-weight:600;">${currentUser.phone || '-'}</span>
-                </div>
+                ${[['ID',currentUser.id],['Username',currentUser.username],['NIM',currentUser.nim||'-'],['Program Studi',currentUser.prodi||'-'],['Email',currentUser.email||'-'],['No. HP',currentUser.phone||'-']].map(([label,val]) =>
+                    `<div style="display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border);"><span style="color:var(--text-light);font-weight:500;">${label}</span><span style="font-weight:600;">${val}</span></div>`
+                ).join('')}
             </div>
         </div>
     `;
@@ -2103,709 +1836,35 @@ function loadMyProfile() {
 // ==================== HELPERS ====================
 function formatDate(dateStr) {
     if (!dateStr) return '-';
-    try {
-        const d = new Date(dateStr);
-        return d.toLocaleDateString('id-ID', { day: '2-digit', month: 'short', year: 'numeric' });
-    } catch { return dateStr; }
+    try { return new Date(dateStr).toLocaleDateString('id-ID', { day: '2-digit', month: 'short', year: 'numeric' }); }
+    catch { return dateStr; }
 }
 
 function getStatusClass(status, tanggalKembali) {
     if (status === 'dikembalikan') return 'status-returned';
-    if (status === 'dipinjam') {
-        const now = new Date();
-        const due = new Date(tanggalKembali);
-        return now > due ? 'status-overdue' : 'status-borrowed';
-    }
+    if (status === 'dipinjam') { return new Date() > new Date(tanggalKembali) ? 'status-overdue' : 'status-borrowed'; }
     return 'status-pending';
 }
 
 function getStatusText(status, tanggalKembali) {
     if (status === 'dikembalikan') return 'Dikembalikan';
-    if (status === 'dipinjam') {
-        const now = new Date();
-        const due = new Date(tanggalKembali);
-        return now > due ? 'Terlambat' : 'Dipinjam';
-    }
+    if (status === 'dipinjam') { return new Date() > new Date(tanggalKembali) ? 'Terlambat' : 'Dipinjam'; }
     return status;
 }
 
 function showAbout() {
     showDynamicModal('aboutModal', `
         <div style="text-align:center;">
-            <div style="width:70px;height:70px;border-radius:18px;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;margin:0 auto 20px;color:white;font-size:1.8rem;">
-                <i class="fas fa-book-open-reader"></i>
-            </div>
+            <div style="width:70px;height:70px;border-radius:18px;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;margin:0 auto 20px;color:white;font-size:1.8rem;"><i class="fas fa-book-open-reader"></i></div>
             <h2>Perpustakaan Digital</h2>
             <h3 style="color:var(--primary);font-weight:600;margin-bottom:20px;">STAI Al-Musdariyah Cimahi</h3>
-            <p style="color:var(--text-light);line-height:1.8;margin-bottom:20px;">
-                Sistem Informasi Perpustakaan STAI Al-Musdariyah Cimahi adalah platform digital
-                yang dirancang untuk memudahkan pengelolaan koleksi buku, peminjaman, dan
-                pengembalian buku secara efisien.
-            </p>
+            <p style="color:var(--text-light);line-height:1.8;margin-bottom:20px;">Sistem Informasi Perpustakaan STAI Al-Musdariyah Cimahi adalah platform digital yang dirancang untuk memudahkan pengelolaan koleksi buku, peminjaman, dan pengembalian buku secara efisien.</p>
             <div style="background:var(--primary-ultra-light);border-radius:var(--radius);padding:20px;text-align:left;">
                 <h4 style="margin-bottom:12px;color:var(--primary-dark);">📍 Informasi Kampus</h4>
-                <p style="font-size:0.88rem;color:var(--text-light);line-height:1.8;">
-                    <strong>STAI Al-Musdariyah Cimahi</strong><br>
-                    Jl, Kamarung No.25A, Cimahi<br>
-                    Jawa Barat, Indonesia<br>
-                    📧 info@staialmusdariyah.ac.id
-                </p>
+                <p style="font-size:0.88rem;color:var(--text-light);line-height:1.8;"><strong>STAI Al-Musdariyah Cimahi</strong><br>Jl. Kamarung No.25A, Cimahi<br>Jawa Barat, Indonesia<br>📧 info@staialmusdariyah.ac.id</p>
             </div>
         </div>
     `, 'modal-lg');
-}
-    // ==================== CATEGORIES ====================
-let allCategories = [];
-
-const CATEGORY_COLORS = [
-    '#0ea5e9','#8b5cf6','#10b981','#f59e0b','#ef4444',
-    '#06b6d4','#ec4899','#6366f1','#84cc16','#64748b',
-    '#f97316','#14b8a6','#a855f7','#0284c7','#059669'
-];
-
-const CATEGORY_ICONS = [
-    'fa-book','fa-book-open','fa-bookmark','fa-graduation-cap',
-    'fa-mosque','fa-moon','fa-star','fa-heart','fa-scale-balanced',
-    'fa-quran','fa-language','fa-landmark','fa-pen-nib',
-    'fa-scroll','fa-globe','fa-users','fa-lightbulb',
-    'fa-magnifying-glass','fa-atom','fa-leaf'
-];
-
-async function loadCategoriesPage() {
-    setActiveMenu('categories');
-    document.getElementById('pageTitle').textContent = 'Manajemen Kategori';
-    const content = document.getElementById('contentArea');
-
-    content.innerHTML = `
-        <div class="data-card" style="margin-bottom:24px;">
-            <div class="data-card-header">
-                <h3><i class="fas fa-tags"></i> Kelola Kategori Buku</h3>
-                <div class="filter-bar">
-                    <input type="text" id="catSearchInput" 
-                        placeholder="Cari kategori..." 
-                        onkeyup="filterCategories()">
-                    <button class="btn btn-primary btn-sm" 
-                        onclick="showAddCategoryModal()">
-                        <i class="fas fa-plus"></i> Tambah Kategori
-                    </button>
-                </div>
-            </div>
-            <div style="padding:20px 24px;">
-                <div id="catStatBar" class="cat-stat-bar">
-                    <i class="fas fa-spinner fa-spin" 
-                        style="color:var(--primary)"></i> 
-                    Memuat statistik...
-                </div>
-                <div class="category-grid" id="categoryGrid">
-                    ${[1,2,3,4].map(() => `
-                        <div class="category-card" 
-                            style="opacity:0.4;pointer-events:none;">
-                            <div class="category-icon" 
-                                style="background:#e2e8f0;"></div>
-                            <div class="category-info">
-                                <div style="height:16px;background:#e2e8f0;
-                                    border-radius:4px;margin-bottom:8px;
-                                    width:60%;"></div>
-                                <div style="height:12px;background:#f1f5f9;
-                                    border-radius:4px;width:90%;"></div>
-                            </div>
-                        </div>
-                    `).join('')}
-                </div>
-            </div>
-        </div>
-
-        <div class="data-card">
-            <div class="data-card-header">
-                <h3><i class="fas fa-table"></i> Tabel Kategori</h3>
-            </div>
-            <div class="data-card-body">
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Kategori</th>
-                            <th>Deskripsi</th>
-                            <th>Jumlah Buku</th>
-                            <th>Tanggal Input</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody id="categoriesTableBody">
-                        <tr><td colspan="6" style="text-align:center;
-                            padding:40px;">Memuat data...</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    `;
-
-    await fetchAndRenderCategories();
-}
-
-async function fetchAndRenderCategories() {
-    const result = await apiCall({ action: 'getCategories' });
-    if (result.status === 'success') {
-        allCategories = result.data;
-        renderCategoryGrid(allCategories);
-        renderCategoriesTable(allCategories);
-        renderCatStatBar(allCategories);
-    } else {
-        showNotification(result.message, 'error');
-    }
-}
-
-function renderCatStatBar(categories) {
-    const bar = document.getElementById('catStatBar');
-    if (!bar) return;
-
-    const total = categories.length;
-    const totalBuku = categories.reduce((s, c) => s + (c.jumlah_buku || 0), 0);
-    const withBooks = categories.filter(c => c.jumlah_buku > 0).length;
-    const empty = total - withBooks;
-
-    bar.innerHTML = `
-        <div class="cat-stat-item">
-            <i class="fas fa-tags" style="color:var(--primary)"></i>
-            <strong>${total}</strong> Total Kategori
-        </div>
-        <div class="cat-stat-item">
-            <i class="fas fa-book" style="color:var(--accent2)"></i>
-            <strong>${totalBuku}</strong> Total Buku Terkategori
-        </div>
-        <div class="cat-stat-item">
-            <i class="fas fa-check-circle" style="color:var(--success)"></i>
-            <strong>${withBooks}</strong> Kategori Terisi
-        </div>
-        <div class="cat-stat-item">
-            <i class="fas fa-circle-minus" style="color:var(--text-muted)"></i>
-            <strong>${empty}</strong> Kategori Kosong
-        </div>
-    `;
-}
-
-function renderCategoryGrid(categories) {
-    const grid = document.getElementById('categoryGrid');
-    if (!grid) return;
-
-    if (!categories.length) {
-        grid.innerHTML = `
-            <div class="empty-state" style="grid-column:1/-1;">
-                <i class="fas fa-tags"></i>
-                <h3>Belum ada kategori</h3>
-                <p>Tambahkan kategori pertama Anda</p>
-            </div>`;
-        return;
-    }
-
-    grid.innerHTML = categories.map(cat => `
-        <div class="category-card" 
-            style="--cat-color:${cat.warna}">
-            <div class="category-icon" 
-                style="background:${cat.warna}">
-                <i class="fas ${cat.icon || 'fa-book'}"></i>
-            </div>
-            <div class="category-info">
-                <h4>${cat.nama}</h4>
-                <p>${cat.deskripsi || 
-                    '<em style="color:var(--text-muted)">Tidak ada deskripsi</em>'}</p>
-                <div class="category-meta">
-                    <span class="category-book-count">
-                        <i class="fas fa-book"></i> 
-                        ${cat.jumlah_buku} buku
-                    </span>
-                </div>
-            </div>
-            <div class="category-actions">
-                <button class="action-btn" 
-                    title="Edit Kategori"
-                    onclick="showEditCategoryModal('${cat.id}')">
-                    <i class="fas fa-pen"></i>
-                </button>
-                <button class="action-btn delete" 
-                    title="Hapus Kategori"
-                    onclick="deleteCategory('${cat.id}',
-                        '${cat.nama.replace(/'/g,"\\'")}',
-                        ${cat.jumlah_buku})">
-                    <i class="fas fa-trash"></i>
-                </button>
-            </div>
-        </div>
-    `).join('');
-}
-
-function renderCategoriesTable(categories) {
-    const tbody = document.getElementById('categoriesTableBody');
-    if (!tbody) return;
-
-    if (!categories.length) {
-        tbody.innerHTML = `
-            <tr><td colspan="6">
-                <div class="empty-state">
-                    <i class="fas fa-tags"></i>
-                    <h3>Belum ada kategori</h3>
-                </div>
-            </td></tr>`;
-        return;
-    }
-
-    tbody.innerHTML = categories.map(cat => `
-        <tr>
-            <td><strong>${cat.id}</strong></td>
-            <td>
-                <div style="display:flex;align-items:center;gap:10px;">
-                    <div style="width:32px;height:32px;border-radius:8px;
-                        background:${cat.warna};display:flex;
-                        align-items:center;justify-content:center;
-                        color:white;font-size:0.85rem;flex-shrink:0;">
-                        <i class="fas ${cat.icon || 'fa-book'}"></i>
-                    </div>
-                    <strong>${cat.nama}</strong>
-                </div>
-            </td>
-            <td style="max-width:250px;color:var(--text-light);">
-                ${cat.deskripsi || '-'}
-            </td>
-            <td>
-                <span class="status-badge 
-                    ${cat.jumlah_buku > 0 ? 
-                        'status-active' : 'status-inactive'}">
-                    ${cat.jumlah_buku} buku
-                </span>
-            </td>
-            <td>${formatDate(cat.tanggal_input)}</td>
-            <td>
-                <div class="action-btns">
-                    <button class="action-btn" 
-                        title="Edit"
-                        onclick="showEditCategoryModal('${cat.id}')">
-                        <i class="fas fa-pen"></i>
-                    </button>
-                    <button class="action-btn" 
-                        title="Lihat Buku"
-                        onclick="viewCategoryBooks('${cat.nama}')">
-                        <i class="fas fa-eye"></i>
-                    </button>
-                    <button class="action-btn delete" 
-                        title="Hapus"
-                        onclick="deleteCategory('${cat.id}',
-                            '${cat.nama.replace(/'/g,"\\'")}',
-                            ${cat.jumlah_buku})">
-                        <i class="fas fa-trash"></i>
-                    </button>
-                </div>
-            </td>
-        </tr>
-    `).join('');
-}
-
-function filterCategories() {
-    const q = document.getElementById('catSearchInput')
-        .value.toLowerCase();
-    const filtered = !q ? allCategories : 
-        allCategories.filter(c =>
-            c.nama.toLowerCase().includes(q) ||
-            (c.deskripsi && c.deskripsi.toLowerCase().includes(q))
-        );
-    renderCategoryGrid(filtered);
-    renderCategoriesTable(filtered);
-    renderCatStatBar(filtered);
-}
-
-// -------- ADD CATEGORY MODAL --------
-function showAddCategoryModal() {
-    showDynamicModal('addCatModal', `
-        <h2>
-            <i class="fas fa-plus-circle" 
-                style="color:var(--primary)"></i> 
-            Tambah Kategori
-        </h2>
-        <p class="subtitle">Buat kategori baru untuk koleksi buku</p>
-
-        <div class="form-group">
-            <label>Nama Kategori *</label>
-            <input type="text" id="acNama" 
-                placeholder="Contoh: Tafsir Al-Quran"
-                oninput="updateCatPreview()">
-        </div>
-
-        <div class="form-group">
-            <label>Deskripsi</label>
-            <textarea id="acDesc" rows="2"
-                placeholder="Deskripsi singkat kategori ini..."
-                oninput="updateCatPreview()"></textarea>
-        </div>
-
-        <div class="form-group">
-            <label>Pilih Warna</label>
-            <div class="color-grid" id="acColorGrid">
-                ${CATEGORY_COLORS.map(c => `
-                    <div class="color-swatch ${c === '#0ea5e9' ? 'selected' : ''}"
-                        style="background:${c}"
-                        data-color="${c}"
-                        onclick="selectColor('${c}','ac')"
-                        title="${c}"></div>
-                `).join('')}
-            </div>
-            <input type="color" id="acColorCustom" 
-                value="#0ea5e9" 
-                onchange="selectCustomColor(this.value,'ac')"
-                style="margin-top:8px;width:100%;
-                    height:36px;border-radius:8px;
-                    border:1px solid var(--border);
-                    padding:2px;cursor:pointer;">
-        </div>
-
-        <div class="form-group">
-            <label>Pilih Icon</label>
-            <div class="icon-grid" id="acIconGrid">
-                ${CATEGORY_ICONS.map((ico, idx) => `
-                    <div class="icon-item 
-                        ${idx === 0 ? 'selected' : ''}"
-                        data-icon="${ico}"
-                        onclick="selectIcon('${ico}','ac')"
-                        title="${ico}">
-                        <i class="fas ${ico}"></i>
-                    </div>
-                `).join('')}
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label>Preview</label>
-            <div id="acPreview" style="display:flex;
-                align-items:center;gap:12px;padding:16px;
-                background:var(--bg);border-radius:var(--radius);
-                border:1px solid var(--border);">
-                <div id="acPreviewIcon" 
-                    style="width:48px;height:48px;
-                        border-radius:12px;background:#0ea5e9;
-                        display:flex;align-items:center;
-                        justify-content:center;
-                        color:white;font-size:1.2rem;">
-                    <i class="fas fa-book"></i>
-                </div>
-                <div>
-                    <div id="acPreviewName" 
-                        style="font-weight:700;
-                            color:var(--secondary);">
-                        Nama Kategori
-                    </div>
-                    <div id="acPreviewDesc" 
-                        style="font-size:0.78rem;
-                            color:var(--text-light);">
-                        Deskripsi kategori
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <input type="hidden" id="acColor" value="#0ea5e9">
-        <input type="hidden" id="acIcon" value="fa-book">
-
-        <button class="btn btn-primary btn-full" 
-            onclick="doAddCategory()">
-            <i class="fas fa-save"></i> Simpan Kategori
-        </button>
-    `, 'modal-lg');
-}
-
-function selectColor(color, prefix) {
-    document.getElementById(prefix + 'Color').value = color;
-    document.querySelectorAll(`#${prefix}ColorGrid .color-swatch`)
-        .forEach(el => {
-            el.classList.toggle('selected', 
-                el.dataset.color === color);
-        });
-    updateCatPreview(prefix);
-}
-
-function selectCustomColor(color, prefix) {
-    document.getElementById(prefix + 'Color').value = color;
-    document.querySelectorAll(`#${prefix}ColorGrid .color-swatch`)
-        .forEach(el => el.classList.remove('selected'));
-    updateCatPreview(prefix);
-}
-
-function selectIcon(icon, prefix) {
-    document.getElementById(prefix + 'Icon').value = icon;
-    document.querySelectorAll(`#${prefix}IconGrid .icon-item`)
-        .forEach(el => {
-            el.classList.toggle('selected', 
-                el.dataset.icon === icon);
-        });
-    updateCatPreview(prefix);
-}
-
-function updateCatPreview(prefix = 'ac') {
-    const nama = document.getElementById(prefix + 'Nama')?.value 
-        || document.getElementById(prefix === 'ac' ? 'acNama' : 'ecNama')?.value 
-        || 'Nama Kategori';
-    const desc = document.getElementById(prefix + 'Desc')?.value 
-        || document.getElementById(prefix === 'ac' ? 'acDesc' : 'ecDesc')?.value 
-        || 'Deskripsi kategori';
-    const color = document.getElementById(prefix + 'Color')?.value || '#0ea5e9';
-    const icon = document.getElementById(prefix + 'Icon')?.value || 'fa-book';
-
-    const previewIcon = document.getElementById(prefix + 'PreviewIcon');
-    const previewName = document.getElementById(prefix + 'PreviewName');
-    const previewDesc = document.getElementById(prefix + 'PreviewDesc');
-
-    if (previewIcon) {
-        previewIcon.style.background = color;
-        previewIcon.innerHTML = `<i class="fas ${icon}"></i>`;
-    }
-    if (previewName) previewName.textContent = nama || 'Nama Kategori';
-    if (previewDesc) previewDesc.textContent = desc || 'Deskripsi kategori';
-}
-
-async function doAddCategory() {
-    const nama = document.getElementById('acNama').value.trim();
-    const deskripsi = document.getElementById('acDesc').value.trim();
-    const warna = document.getElementById('acColor').value;
-    const icon = document.getElementById('acIcon').value;
-
-    if (!nama) { 
-        showNotification('Nama kategori wajib diisi', 'warning'); 
-        return; 
-    }
-
-    const result = await apiCall({ 
-        action: 'addCategory', 
-        nama, deskripsi, warna, icon 
-    });
-    
-    if (result.status === 'success') {
-        showNotification('Kategori berhasil ditambahkan!', 'success');
-        closeDynamicModal('addCatModal');
-        await fetchAndRenderCategories();
-    } else {
-        showNotification(result.message, 'error');
-    }
-}
-
-// -------- EDIT CATEGORY MODAL --------
-function showEditCategoryModal(catId) {
-    const cat = allCategories.find(c => c.id === catId);
-    if (!cat) return;
-
-    showDynamicModal('editCatModal', `
-        <h2>
-            <i class="fas fa-pen" 
-                style="color:var(--primary)"></i> 
-            Edit Kategori
-        </h2>
-        <p class="subtitle">Perbarui informasi kategori</p>
-
-        <div class="form-group">
-            <label>Nama Kategori *</label>
-            <input type="text" id="ecNama" 
-                value="${cat.nama}"
-                oninput="updateCatPreview('ec')">
-        </div>
-
-        <div class="form-group">
-            <label>Deskripsi</label>
-            <textarea id="ecDesc" rows="2"
-                oninput="updateCatPreview('ec')"
-                >${cat.deskripsi || ''}</textarea>
-        </div>
-
-        <div class="form-group">
-            <label>Pilih Warna</label>
-            <div class="color-grid" id="ecColorGrid">
-                ${CATEGORY_COLORS.map(c => `
-                    <div class="color-swatch 
-                        ${c === cat.warna ? 'selected' : ''}"
-                        style="background:${c}"
-                        data-color="${c}"
-                        onclick="selectColor('${c}','ec')"
-                        title="${c}"></div>
-                `).join('')}
-            </div>
-            <input type="color" id="ecColorCustom"
-                value="${cat.warna}"
-                onchange="selectCustomColor(this.value,'ec')"
-                style="margin-top:8px;width:100%;
-                    height:36px;border-radius:8px;
-                    border:1px solid var(--border);
-                    padding:2px;cursor:pointer;">
-        </div>
-
-        <div class="form-group">
-            <label>Pilih Icon</label>
-            <div class="icon-grid" id="ecIconGrid">
-                ${CATEGORY_ICONS.map(ico => `
-                    <div class="icon-item 
-                        ${ico === cat.icon ? 'selected' : ''}"
-                        data-icon="${ico}"
-                        onclick="selectIcon('${ico}','ec')"
-                        title="${ico}">
-                        <i class="fas ${ico}"></i>
-                    </div>
-                `).join('')}
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label>Preview</label>
-            <div style="display:flex;align-items:center;gap:12px;
-                padding:16px;background:var(--bg);
-                border-radius:var(--radius);
-                border:1px solid var(--border);">
-                <div id="ecPreviewIcon" 
-                    style="width:48px;height:48px;
-                        border-radius:12px;
-                        background:${cat.warna};
-                        display:flex;align-items:center;
-                        justify-content:center;
-                        color:white;font-size:1.2rem;">
-                    <i class="fas ${cat.icon || 'fa-book'}"></i>
-                </div>
-                <div>
-                    <div id="ecPreviewName" 
-                        style="font-weight:700;
-                            color:var(--secondary);">
-                        ${cat.nama}
-                    </div>
-                    <div id="ecPreviewDesc" 
-                        style="font-size:0.78rem;
-                            color:var(--text-light);">
-                        ${cat.deskripsi || 'Deskripsi kategori'}
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        ${cat.jumlah_buku > 0 ? `
-        <div style="background:rgba(245,158,11,0.08);
-            border:1px solid rgba(245,158,11,0.3);
-            border-radius:var(--radius);padding:12px 16px;
-            margin-bottom:16px;font-size:0.85rem;
-            color:var(--warning);display:flex;
-            align-items:center;gap:8px;">
-            <i class="fas fa-triangle-exclamation"></i>
-            <span>Kategori ini memiliki <strong>${cat.jumlah_buku} buku</strong>. 
-            Jika nama diubah, semua buku akan diperbarui otomatis.</span>
-        </div>` : ''}
-
-        <input type="hidden" id="ecColor" value="${cat.warna}">
-        <input type="hidden" id="ecIcon" value="${cat.icon || 'fa-book'}">
-
-        <button class="btn btn-primary btn-full" 
-            onclick="doUpdateCategory('${cat.id}')">
-            <i class="fas fa-save"></i> Update Kategori
-        </button>
-    `, 'modal-lg');
-}
-
-async function doUpdateCategory(id) {
-    const nama = document.getElementById('ecNama').value.trim();
-    const deskripsi = document.getElementById('ecDesc').value.trim();
-    const warna = document.getElementById('ecColor').value;
-    const icon = document.getElementById('ecIcon').value;
-
-    if (!nama) { 
-        showNotification('Nama kategori wajib diisi', 'warning'); 
-        return; 
-    }
-
-    const result = await apiCall({ 
-        action: 'updateCategory', 
-        id, nama, deskripsi, warna, icon 
-    });
-
-    if (result.status === 'success') {
-        showNotification('Kategori berhasil diupdate!', 'success');
-        closeDynamicModal('editCatModal');
-        await fetchAndRenderCategories();
-    } else {
-        showNotification(result.message, 'error');
-    }
-}
-
-// -------- DELETE & VIEW --------
-async function deleteCategory(id, nama, jumlahBuku) {
-    if (jumlahBuku > 0) {
-        showNotification(
-            `Kategori "${nama}" memiliki ${jumlahBuku} buku, 
-            tidak bisa dihapus!`, 
-            'warning'
-        );
-        return;
-    }
-
-    if (!confirm(`Hapus kategori "${nama}"?`)) return;
-
-    const result = await apiCall({ action: 'deleteCategory', id });
-    if (result.status === 'success') {
-        showNotification('Kategori berhasil dihapus', 'success');
-        await fetchAndRenderCategories();
-    } else {
-        showNotification(result.message, 'error');
-    }
-}
-
-async function viewCategoryBooks(kategoriNama) {
-    const result = await apiCall({ action: 'getBooks' });
-    if (result.status !== 'success') return;
-
-    const books = result.data.filter(b => b.kategori === kategoriNama);
-    const cat = allCategories.find(c => c.nama === kategoriNama);
-    const color = cat?.warna || '#0ea5e9';
-
-    showDynamicModal('catBooksModal', `
-        <div style="display:flex;align-items:center;gap:12px;
-            margin-bottom:20px;">
-            <div style="width:48px;height:48px;
-                border-radius:12px;background:${color};
-                display:flex;align-items:center;
-                justify-content:center;
-                color:white;font-size:1.2rem;">
-                <i class="fas ${cat?.icon || 'fa-book'}"></i>
-            </div>
-            <div>
-                <h2 style="margin:0;">${kategoriNama}</h2>
-                <p style="margin:0;color:var(--text-light);
-                    font-size:0.85rem;">
-                    ${books.length} buku dalam kategori ini
-                </p>
-            </div>
-        </div>
-        ${books.length ? `
-        <table class="data-table">
-            <thead>
-                <tr>
-                    <th>Judul</th>
-                    <th>Pengarang</th>
-                    <th>Tahun</th>
-                    <th>Tersedia</th>
-                </tr>
-            </thead>
-            <tbody>
-                ${books.map(b => `
-                    <tr>
-                        <td><strong>${b.judul}</strong></td>
-                        <td>${b.pengarang}</td>
-                        <td>${b.tahun}</td>
-                        <td>
-                            <span class="status-badge 
-                                ${b.tersedia > 0 ? 
-                                    'status-active' : 
-                                    'status-overdue'}">
-                                ${b.tersedia}/${b.jumlah}
-                            </span>
-                        </td>
-                    </tr>
-                `).join('')}
-            </tbody>
-        </table>` : `
-        <div class="empty-state">
-            <i class="fas fa-book-open"></i>
-            <h3>Belum ada buku</h3>
-            <p>Belum ada buku dalam kategori ini</p>
-        </div>`}
-    `, 'modal-xl');
 }
 </script>
 </body>
